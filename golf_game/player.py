@@ -6,6 +6,10 @@ class Player(object):
         super(Player, self).__init__(*args, **kwargs)
         self._name = name
 
+    @property
+    def name(self):
+        return self._name
+
     def __str__(self):
         return self._name
 

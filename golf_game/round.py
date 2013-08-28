@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from scorecard import Scorecard
+from game_engine import GameEngine
 
 class Round(object):
     def __init__(self, course, players=[], *args, **kwargs):
@@ -9,10 +10,15 @@ class Round(object):
         self._course = course
         self._players = players 
         self._scorecard = Scorecard()
+        self._game_engine = GameEngine()
 
     @property
     def course(self):
         return self._course
+
+    @property
+    def players(self):
+        return self._players
 
     @property
     def scorecard(self):

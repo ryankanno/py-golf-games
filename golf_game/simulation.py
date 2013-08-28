@@ -19,6 +19,64 @@ def create_hole(hole_number):
     distance = random.randrange(250, 550, 50)
     return Hole(hole_number, par, distance)
 
+def get_str(curr, max):
+    to_print = ""
+    for x in xrange(max - curr):
+        to_print += " "
+    return to_print
+
+def print_header(header, max_len):
+    diff_str = get_str(len(header), max_len)
+    print header + diff_str,
+
+def pretty_print(round):
+    print "--------------------"
+    print round.course
+    print "--------------------"
+
+    max_len = 0
+    for player in round.players:
+        curr = len(player.name)
+        max_len = curr if curr > max_len else max_len
+
+    print_header("Hole", max_len)
+    for hole in round.course.holes:
+        if (hole.number == 1): print " ",
+        print str(hole.number) + "  | ",
+
+    print ""
+
+    print_header("Par", max_len)
+    for hole in round.course.holes:
+        if (hole.number == 1): print " ",
+        if (hole.number > 9): 
+            print str(hole.par) + "   | ",
+        else:
+            print str(hole.par) + "  | ",
+
+    print ""
+
+    print_header("Distance", max_len)
+    for hole in round.course.holes:
+        if (hole.number == 1): print "",
+        if (hole.number > 9): 
+            print str(hole.distance) + "  |",
+        else:
+            print str(hole.distance) + " |",
+
+    print ""
+
+    for player in round.players:
+        print_header(player.name, max_len)
+        for hole in round.course.holes:
+            if (hole.number == 1): print "",
+            if (hole.number > 9): 
+                print str(round.scorecard.get_score(player, hole.number).score) + "  |",
+            else:
+                print str(round.scorecard.get_score(player, hole.number).score) + "  |",
+        print ""
+
+
 if __name__ == '__main__':
     try:
         players = []
@@ -60,6 +118,8 @@ if __name__ == '__main__':
                 total += hole_score.score
 
             logging.debug("Total {0}".format(total))
+
+        pretty_print(round)
 
     except:
         trace = traceback.format_exc()
