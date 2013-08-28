@@ -14,14 +14,22 @@ class PlayerScores(object):
         return self._hole_scores[hole_number] if hole_number in self._hole_scores else None
 
     def __iter__(self):
-        return iter(self._hole_scores)
+        return iter(self._hole_scores.values())
 
 
 class HoleScore(object):
     def __init__(self, hole_number, score, *args, **kwargs):
         super(HoleScore, self).__init__(*args, **kwargs)
-        self._hole_number = hole_number
+        self.hole_number = hole_number
         self.score = score 
+
+    @property
+    def hole_number(self):
+        return self._hole_number
+
+    @hole_number.setter
+    def hole_number(self, value):
+        self._hole_number = value
 
     @property
     def score(self):
@@ -38,9 +46,7 @@ class Scorecard(object):
         self._player_scores = {}
 
     def record_score(self, player, hole_number, score):
-        print "in"
         if player not in self._player_scores:
-            print "Not in"
             self._player_scores[player] = PlayerScores(player)
 
         self._player_scores[player].record_score(hole_number, score) 

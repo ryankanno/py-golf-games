@@ -21,11 +21,9 @@ class Round(object):
     def add_player(self, player):
         self._players.push(player)
 
-    def record_score(self, hole_number, player, score):
-        print "GOING TO"
+    def record_score(self, player, hole_number, score):
         if player in self._players and self.course.get_hole(hole_number):
-            print "RECORDING"
-            self.scorecard.record_score(hole_number, player, score)
+            self.scorecard.record_score(player, hole_number, score)
 
 
 # vim: filetype=python
