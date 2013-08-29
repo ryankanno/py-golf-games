@@ -24,6 +24,14 @@ class Course(object):
     def name(self):
         return self._name
 
+    @property
+    def total_distance(self):
+        return sum([hole.distance for hole in self.holes])
+
+    @property
+    def total_par(self):
+        return sum([hole.par for hole in self.holes])
+
     def __str__(self):
         return self.name
 

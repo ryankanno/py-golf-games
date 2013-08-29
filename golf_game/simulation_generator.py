@@ -4,6 +4,7 @@
 from course import Course
 from hole import Hole
 from player import Player
+from round import Round
 
 import random
 
@@ -37,4 +38,16 @@ class PlayersGenerator(object):
             players.append(Player(cls._random_name()))
         return players
 
+
+class RoundGenerator(object):
+    @classmethod
+    def generate(cls, course, players):
+        round = Round(course, players)
+
+        for player in players:
+            for hole in xrange(1, len(course.holes) + 1):
+                strokes = random.randint(3, 10)
+                round.record_score(player, hole, strokes)
+
+        return round
 # vim: filetype=python

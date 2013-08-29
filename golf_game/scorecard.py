@@ -15,6 +15,10 @@ class PlayerScores(object):
         return self._hole_scores[hole_number] \
             if hole_number in self._hole_scores else None
 
+    @property
+    def total_score(self):
+        return sum([hole_score.score for hole_score in self._hole_scores.values()])
+
     def __iter__(self):
         return iter(self._hole_scores.values())
 

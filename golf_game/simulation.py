@@ -10,6 +10,7 @@ from round import Round
 from simulation_generator import CourseGenerator
 from simulation_generator import HoleGenerator
 from simulation_generator import PlayersGenerator
+from simulation_generator import RoundGenerator
 
 import random
 
@@ -50,6 +51,8 @@ def pretty_print(round):
         else:
             print str(hole.par) + "  | ",
 
+    print round.course.total_par,
+
     print ""
 
     print_header("Distance", max_len)
@@ -59,6 +62,8 @@ def pretty_print(round):
             print str(hole.distance) + "  |",
         else:
             print str(hole.distance) + " |",
+
+    print round.course.total_distance,
 
     print ""
 
@@ -70,6 +75,8 @@ def pretty_print(round):
                 print str(round.scorecard.get_score(player, hole.number).score) + "  |",
             else:
                 print str(round.scorecard.get_score(player, hole.number).score) + "  |",
+
+        print round.scorecard.get_scores(player).total_score,
         print ""
 
 
@@ -77,12 +84,7 @@ if __name__ == '__main__':
     try:
         players = PlayersGenerator.generate();
         course = CourseGenerator.generate("Makalena", 18)
-        round = Round(course, players)
-
-        for player in players:
-            for hole in xrange(1, 19):
-                strokes = random.randint(3, 10)
-                round.record_score(player, hole, strokes)
+        round = RoundGenerator.generate(course, players)
 
         for player in players:
             logging.debug(player)
