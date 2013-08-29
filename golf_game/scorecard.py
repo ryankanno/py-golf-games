@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+
 class PlayerScores(object):
     def __init__(self, player, *args, **kwargs):
         super(PlayerScores, self).__init__(*args, **kwargs)
@@ -11,7 +12,8 @@ class PlayerScores(object):
         self._hole_scores[hole_number] = HoleScore(hole_number, score)
 
     def get_score(self, hole_number):
-        return self._hole_scores[hole_number] if hole_number in self._hole_scores else None
+        return self._hole_scores[hole_number] \
+            if hole_number in self._hole_scores else None
 
     def __iter__(self):
         return iter(self._hole_scores.values())
@@ -21,7 +23,7 @@ class HoleScore(object):
     def __init__(self, hole_number, score, *args, **kwargs):
         super(HoleScore, self).__init__(*args, **kwargs)
         self.hole_number = hole_number
-        self.score = score 
+        self.score = score
 
     @property
     def hole_number(self):
@@ -49,7 +51,7 @@ class Scorecard(object):
         if player not in self._player_scores:
             self._player_scores[player] = PlayerScores(player)
 
-        self._player_scores[player].record_score(hole_number, score) 
+        self._player_scores[player].record_score(hole_number, score)
 
     def get_scores(self, player):
         return self._player_scores[player] if player in self._player_scores \

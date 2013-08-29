@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+
 class Hole(object):
     def __init__(self, number, par, distance, *args, **kwargs):
         super(Hole, self).__init__(*args, **kwargs)

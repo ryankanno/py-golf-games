@@ -3,9 +3,11 @@
 
 
 class GameEngine(object):
-    def __init__(self, *args, **kwargs):
+    def __init__(self, round, *args, **kwargs):
         super(GameEngine, self).__init__(*args, **kwargs)
-        self._games = []
+        self._round = round
 
-    def enable_game(self, game):
+    def enable_game(self, player, game):
         self._games.append(game)
+
+# vim: filetype=python

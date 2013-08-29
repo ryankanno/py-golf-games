@@ -3,6 +3,7 @@
 
 from hole import Hole
 
+
 class Course(object):
     def __init__(self, name, *args, **kwargs):
         super(Course, self).__init__(*args, **kwargs)
@@ -15,11 +16,11 @@ class Course(object):
     def get_hole(self, hole_number):
         return self._holes[hole_number] if hole_number in self._holes else None
 
-    @property 
+    @property
     def holes(self):
         return self._holes.values()
 
-    @property 
+    @property
     def name(self):
         return self._name
 
