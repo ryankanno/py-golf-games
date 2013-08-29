@@ -5,6 +5,21 @@ from hole import Hole
 
 
 class Course(object):
+    """
+    >>> c = Course("Hawaii Kai")
+    >>> c.name
+    'Hawaii Kai'
+    >>> h1 = Hole(1, 4, 200)
+    >>> h2 = Hole(2, 4, 300)
+    >>> c.add_hole(1, h1)
+    >>> c.add_hole(2, h2)
+    >>> c.total_distance
+    500
+    >>> c.total_par
+    8
+    >>> len(c.holes)
+    2
+    """
     def __init__(self, name, *args, **kwargs):
         super(Course, self).__init__(*args, **kwargs)
         self._name = name

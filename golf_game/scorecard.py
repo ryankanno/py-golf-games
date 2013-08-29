@@ -3,6 +3,20 @@
 
 
 class PlayerScores(object):
+    """
+    >>> from player import Player
+    >>> p = Player("SpongeBob")
+    >>> ps = PlayerScores(p)
+    >>> ps.record_score(1, 5)
+    >>> ps.record_score(2, 3)
+    >>> ps.total_score
+    8
+    >>> hole_score = ps.get_score(1)
+    >>> hole_score.hole_number
+    1
+    >>> hole_score.score
+    5
+    """
     def __init__(self, player, *args, **kwargs):
         super(PlayerScores, self).__init__(*args, **kwargs)
         self._player = player
@@ -24,6 +38,19 @@ class PlayerScores(object):
 
 
 class HoleScore(object):
+    """
+    >>> score = HoleScore(1, 4)
+    >>> score.hole_number
+    1
+    >>> score.hole_number = 2
+    >>> score.hole_number
+    2
+    >>> score.score
+    4
+    >>> score.score = 10
+    >>> score.score
+    10
+    """
     def __init__(self, hole_number, score, *args, **kwargs):
         super(HoleScore, self).__init__(*args, **kwargs)
         self.hole_number = hole_number

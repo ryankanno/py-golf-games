@@ -3,6 +3,15 @@
 
 
 class Hole(object):
+    """
+    >>> h = Hole(1, 4, 500)
+    >>> h.number
+    1
+    >>> h.distance
+    500
+    >>> h.par
+    4
+    """
     def __init__(self, number, par, distance, *args, **kwargs):
         super(Hole, self).__init__(*args, **kwargs)
         self._number = number

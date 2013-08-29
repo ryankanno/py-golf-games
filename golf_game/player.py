@@ -3,6 +3,13 @@
 
 
 class Player(object):
+    """
+    >>> p = Player("SpongeBob", 10)
+    >>> p.name
+    'SpongeBob'
+    >>> p.handicap
+    10
+    """
     def __init__(self, name, handicap=0, *args, **kwargs):
         super(Player, self).__init__(*args, **kwargs)
         self._name = name
