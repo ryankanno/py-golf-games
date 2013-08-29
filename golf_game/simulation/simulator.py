@@ -5,12 +5,10 @@ import logging
 import traceback
 import sys
 
-from round import Round
-
-from simulation_generator import CourseGenerator
-from simulation_generator import HoleGenerator
-from simulation_generator import PlayersGenerator
-from simulation_generator import RoundGenerator
+from generator import CourseGenerator
+from generator import HoleGenerator
+from generator import PlayersGenerator
+from generator import RoundGenerator
 
 import random
 

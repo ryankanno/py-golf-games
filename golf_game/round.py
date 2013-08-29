@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 from scorecard import Scorecard
-from game_engine import GameEngine
 
 
 class Round(object):
