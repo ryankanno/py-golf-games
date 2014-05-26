@@ -4,46 +4,26 @@
 
 class Hole(object):
     """
-    >>> h = Hole(1, 4, 500)
-    >>> h.number
-    1
-    >>> h.distance
-    500
-    >>> h.par
-    4
+    >>> h = Hole(1)
     """
-    def __init__(self, number, par, distance, *args, **kwargs):
+    def __init__(self, number, tees, *args, **kwargs):
         super(Hole, self).__init__(*args, **kwargs)
         self._number = number
-        self._par = par
-        self._distance = distance
+        self._tees = tees or {}
 
     @property
     def number(self):
         return self._number
 
-    @number.setter
-    def number(self, value):
-        self._number = value
-
     @property
-    def distance(self):
-        return self._distance
+    def tees(self):
+        return self._tees
 
-    @distance.setter
-    def distance(self, value):
-        self._distance = value
-
-    @property
-    def par(self):
-        return self._par
-
-    @par.setter
-    def par(self, value):
-        self._par = value
+    def get_tee(self, marker):
+        return self._tees[marker]
 
     def __str__(self):
-        return "Hole {0} (par {1}, {2} yards)".format(
-            self.number, self.par, self.distance)
+        return "Hole {0} (par {1})".format(
+            self.number, self.par)
 
 # vim: filetype=python

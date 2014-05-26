@@ -4,9 +4,12 @@
 from course import Course
 from hole import Hole
 from player import Player
+from player import Gender
 from round import Round
-
+from tee import Tee
+from tee import TeeMarker
 import random
+
 
 class CourseGenerator(object):
     @classmethod
@@ -21,9 +24,26 @@ class CourseGenerator(object):
 class HoleGenerator(object):
     @classmethod
     def generate(cls, hole_number):
+        tees = TeesGenerator.generate()
+        return Hole(hole_number, tees)
+
+
+class TeesGenerator(object):
+    @classmethod
+    def generate(cls):
+        tees = {}
+        for marker in list(TeeMarker):
+            tee = TeeGenerator.generate(marker)
+            tees[marker] = tee
+        return tees
+
+
+class TeeGenerator(object):
+    @classmethod
+    def generate(cls, tee_marker):
         par = random.randint(3, 5)
         distance = random.randrange(250, 550, 50)
-        return Hole(hole_number, par, distance)
+        return Tee(tee_marker, par, distance)
 
 
 class PlayersGenerator(object):
@@ -32,10 +52,14 @@ class PlayersGenerator(object):
         return "Player " + str(int(random.random() * 1024))
 
     @classmethod
+    def _random_gender(cls):
+        return random.choice(list(Gender))
+
+    @classmethod
     def generate(cls, max_players=4):
         players = []
         for x in xrange(random.randint(1, max_players)):
-            players.append(Player(cls._random_name()))
+            players.append(Player(cls._random_name(), cls._random_gender()))
         return players
 
 

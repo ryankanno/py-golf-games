@@ -9,6 +9,7 @@ from generator import CourseGenerator
 from generator import HoleGenerator
 from generator import PlayersGenerator
 from generator import RoundGenerator
+from tee import TeeMarker
 
 import random
 
@@ -41,35 +42,32 @@ def pretty_print(round):
 
     print ""
 
-    print_header("Par", max_len)
-    for hole in round.course.holes:
-        if (hole.number == 1): print " ",
-        if (hole.number > 9): 
-            print str(hole.par) + "   | ",
-        else:
-            print str(hole.par) + "  | ",
+    for marker in list(TeeMarker):
+        print_header(marker.name, max_len)
+        for hole in round.course.holes:
+            tee = hole.get_tee(marker)
+            if (hole.number == 1): print "",
+            if (hole.number > 9):
+                print str(tee.distance) + "  |",
+            else:
+                print str(tee.distance) + " |",
+        print round.course.total_distance(marker)
 
-    print round.course.total_par,
-
-    print ""
-
-    print_header("Distance", max_len)
-    for hole in round.course.holes:
-        if (hole.number == 1): print "",
-        if (hole.number > 9): 
-            print str(hole.distance) + "  |",
-        else:
-            print str(hole.distance) + " |",
-
-    print round.course.total_distance,
-
-    print ""
+        print_header("", max_len)
+        for hole in round.course.holes:
+            tee = hole.get_tee(marker)
+            if (hole.number == 1): print "",
+            if (hole.number > 9):
+                print str(tee.par) + "  |",
+            else:
+                print str(tee.par) + " |",
+        print ""
 
     for player in round.players:
         print_header(player.name, max_len)
         for hole in round.course.holes:
             if (hole.number == 1): print "",
-            if (hole.number > 9): 
+            if (hole.number > 9):
                 print str(round.scorecard.get_score(player, hole.number).score) + "  |",
             else:
                 print str(round.scorecard.get_score(player, hole.number).score) + "  |",

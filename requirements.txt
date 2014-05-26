@@ -1,2 +1,6 @@
-numpy
+enum34
+flake8
+mock
 nose
+nosexcover
+numpy
