@@ -4,17 +4,20 @@
 
 class Course(object):
     """
-    >>> from Hold import Hole
+    >>> from hole import Hole
+    >>> from tee import TeeMarker, Tee
     >>> c = Course("Hawaii Kai")
     >>> c.name
     'Hawaii Kai'
-    >>> h1 = Hole(1, 4, 200)
-    >>> h2 = Hole(2, 4, 300)
+    >>> t1 = Tee(TeeMarker.Gold, 5, 600, 1)
+    >>> t2 = Tee(TeeMarker.Gold, 3, 300, 2)
+    >>> h1 = Hole(1, {TeeMarker.Gold: t1})
+    >>> h2 = Hole(2, {TeeMarker.Gold: t2})
     >>> c.add_hole(1, h1)
     >>> c.add_hole(2, h2)
-    >>> c.total_distance()
-    500
-    >>> c.total_par
+    >>> c.total_distance(TeeMarker.Gold)
+    900
+    >>> c.total_par(TeeMarker.Gold)
     8
     >>> len(c.holes)
     2

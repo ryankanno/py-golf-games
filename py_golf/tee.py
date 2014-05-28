@@ -16,6 +16,15 @@ class TeeMarker(Enum):
 
 class Tee(object):
     """
+    >>> t = Tee(TeeMarker.White, 3, 310, 8)
+    >>> t.par
+    3
+    >>> t.distance
+    310
+    >>> t.marker.name
+    'White'
+    >>> t.handicap
+    8
     """
     def __init__(self, marker, par, distance, handicap=None, *args, **kwargs):
         super(Tee, self).__init__(*args, **kwargs)
@@ -40,8 +49,5 @@ class Tee(object):
     @property
     def handicap(self):
         return self._handicap
-
-    def __str__(self):
-        return self.name
 
 # vim: filetype=python

@@ -4,6 +4,7 @@
 from enum import Enum
 from enum import unique
 
+
 @unique
 class Gender(Enum):
     M = 1
@@ -15,8 +16,8 @@ class Player(object):
     >>> p = Player("SpongeBob", Gender.M, 10)
     >>> p.name
     'SpongeBob'
-    >>> p.gender
-    M
+    >>> p.gender.name
+    'M'
     >>> p.handicap
     10
     """

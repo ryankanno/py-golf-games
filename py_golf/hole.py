@@ -4,7 +4,13 @@
 
 class Hole(object):
     """
-    >>> h = Hole(1)
+    >>> h = Hole(1, {})
+    >>> h.number
+    1
+    >>> h.tees
+    {}
+    >>> h.get_tee(1) is None
+    True
     """
     def __init__(self, number, tees, *args, **kwargs):
         super(Hole, self).__init__(*args, **kwargs)
@@ -20,7 +26,10 @@ class Hole(object):
         return self._tees
 
     def get_tee(self, marker):
-        return self._tees[marker]
+        try:
+            return self._tees[marker]
+        except:
+            return None
 
     def __str__(self):
         return "Hole {0} (par {1})".format(

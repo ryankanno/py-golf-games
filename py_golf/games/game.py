@@ -5,7 +5,7 @@
 class Game(object):
     def __init__(self, name, *args, **kwargs):
         super(Game, self).__init__(*args, **kwargs)
-        self._name = name 
+        self._name = name
 
     @property
     def name(self):

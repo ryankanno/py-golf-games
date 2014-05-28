@@ -4,8 +4,8 @@
 
 class PlayerScores(object):
     """
-    >>> from player import Player
-    >>> p = Player("SpongeBob")
+    >>> from player import Gender, Player
+    >>> p = Player("SpongeBob", Gender.M, 10)
     >>> ps = PlayerScores(p)
     >>> ps.record_score(1, 5)
     >>> ps.record_score(2, 3)
@@ -31,7 +31,9 @@ class PlayerScores(object):
 
     @property
     def total_score(self):
-        return sum([hole_score.score for hole_score in self._hole_scores.values()])
+        return sum(
+            [hole_score.score for hole_score in self._hole_scores.values()]
+        )
 
     def __iter__(self):
         return iter(self._hole_scores.values())
