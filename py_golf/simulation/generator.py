@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from course import Course
-from hole import Hole
-from player import Player
-from player import Gender
-from round import Round
-from tee import Tee
-from tee import TeeMarker
+from ..course import Course
+from ..hole import Hole
+from ..player import Player
+from ..player import Gender
+from ..round import Round
+from ..tee import Tee
+from ..tee import TeeMarker
 import random
 
 

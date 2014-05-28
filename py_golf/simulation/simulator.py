@@ -8,7 +8,7 @@ import traceback
 from generator import CourseGenerator
 from generator import PlayersGenerator
 from generator import RoundGenerator
-from tee import TeeMarker
+from ..tee import TeeMarker
 
 logging.basicConfig(
     level=logging.INFO,
