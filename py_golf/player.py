@@ -20,6 +20,8 @@ class Player(object):
     'M'
     >>> p.handicap
     10
+    >>> str(p)
+    'SpongeBob'
     """
     def __init__(self, name, gender, handicap=0, *args, **kwargs):
         super(Player, self).__init__(*args, **kwargs)

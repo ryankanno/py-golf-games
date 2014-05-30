@@ -21,6 +21,10 @@ class Course(object):
     8
     >>> len(c.holes)
     2
+    >>> str(c)
+    'Hawaii Kai'
+    >>> h1 is c.get_hole(1)
+    True
     """
     def __init__(self, name, *args, **kwargs):
         super(Course, self).__init__(*args, **kwargs)

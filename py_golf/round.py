@@ -20,6 +20,18 @@ class Round(object):
     >>> round.add_player(p3)
     >>> len(round.players)
     3
+    >>> from scorecard import Scorecard
+    >>> x = round.scorecard
+    >>> type(x) is Scorecard
+    True
+    >>> round.current_hole is None
+    True
+    >>> round.start()
+    >>> round.current_hole
+    1
+    >>> round.advance_hole()
+    >>> round.current_hole
+    2
     """
     def __init__(self, course, players=[], *args, **kwargs):
         super(Round, self).__init__(*args, **kwargs)
@@ -54,6 +66,12 @@ class Round(object):
     def record_score(self, player, hole_number, score):
         if player in self._players and self.course.get_hole(hole_number):
             self.scorecard.record_score(player, hole_number, score)
+
+    def start(self):
+        self.current_hole = 1
+
+    def advance_hole(self):
+        self.current_hole += 1
 
 
 # vim: filetype=python
