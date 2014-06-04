@@ -5,7 +5,7 @@ py-golf
    :target: https://travis-ci.org/ryankanno/py-golf
 
 .. image:: https://coveralls.io/repos/ryankanno/py-golf/badge.png?branch=master
-  :target: https://coveralls.io/r/ryankanno/py-golf?branch=master
+   :target: https://coveralls.io/r/ryankanno/py-golf?branch=master
 
 
 hic sunt dracones
