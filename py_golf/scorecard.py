@@ -76,6 +76,20 @@ class HoleScore(object):
 
 
 class Scorecard(object):
+    """
+    >>> from player import Gender, Player
+    >>> p1 = Player("SpongeBob", Gender.M, 10)
+    >>> p2 = Player("Squarepants", Gender.F, 10)
+    >>> scorecard = Scorecard()
+    >>> scorecard.record_score(p1, 1, 5)
+    >>> scorecard.record_score(p2, 1, 3)
+    >>> scorecard.get_scores(p1) #doctest: +ELLIPSIS
+    <py_golf.scorecard.PlayerScores object at 0x...>
+    >>> scorecard.get_score(p1, 1).score
+    5
+    >>> scorecard.get_score(p2, 1).score
+    3
+    """
     def __init__(self, *args, **kwargs):
         super(Scorecard, self).__init__(*args, **kwargs)
         self._player_scores = {}
