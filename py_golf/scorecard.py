@@ -4,7 +4,7 @@
 
 class PlayerScores(object):
     """
-    >>> from player import Gender, Player
+    >>> from .player import Gender, Player
     >>> p = Player("SpongeBob", Gender.M, 10)
     >>> ps = PlayerScores(p)
     >>> ps.record_score(1, 5)
@@ -77,7 +77,7 @@ class HoleScore(object):
 
 class Scorecard(object):
     """
-    >>> from player import Gender, Player
+    >>> from .player import Gender, Player
     >>> p1 = Player("SpongeBob", Gender.M, 10)
     >>> p2 = Player("Squarepants", Gender.F, 10)
     >>> scorecard = Scorecard()

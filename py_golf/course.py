@@ -4,8 +4,8 @@
 
 class Course(object):
     """
-    >>> from hole import Hole
-    >>> from tee import TeeMarker, Tee
+    >>> from .hole import Hole
+    >>> from .tee import TeeMarker, Tee
     >>> c = Course("Hawaii Kai")
     >>> c.name
     'Hawaii Kai'
