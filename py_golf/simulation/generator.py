@@ -15,7 +15,7 @@ class CourseGenerator(object):
     @classmethod
     def generate(cls, name, num_holes):
         course = Course(name)
-        for hole_number in xrange(1, num_holes + 1):
+        for hole_number in range(1, num_holes + 1):
             hole = HoleGenerator.generate(hole_number)
             course.add_hole(hole_number, hole)
         return course
@@ -58,7 +58,7 @@ class PlayersGenerator(object):
     @classmethod
     def generate(cls, max_players=4):
         players = []
-        for x in xrange(random.randint(1, max_players)):
+        for x in range(random.randint(1, max_players)):
             players.append(Player(cls._random_name(), cls._random_gender()))
         return players
 
@@ -69,7 +69,7 @@ class RoundGenerator(object):
         round = Round(course, players)
 
         for player in players:
-            for hole in xrange(1, len(course.holes) + 1):
+            for hole in range(1, len(course.holes) + 1):
                 strokes = random.randint(3, 10)
                 round.record_score(player, hole, strokes)
 
