@@ -81,7 +81,7 @@ if __name__ == '__main__':
         round = RoundGenerator.generate(course, players)
 
         pretty_print(round)
-    except:
+    except:  # noqa: E722
         trace = traceback.format_exc()
         logging.error("OMGWTFBBQ: {0}".format(trace))
         sys.exit(1)

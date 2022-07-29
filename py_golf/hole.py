@@ -28,10 +28,7 @@ class Hole(object):
         return self._tees
 
     def get_tee(self, marker):
-        try:
-            return self._tees[marker]
-        except:
-            return None
+        return self._tees.get(marker)
 
     def __str__(self):
         return "Hole {0}".format(self.number)
