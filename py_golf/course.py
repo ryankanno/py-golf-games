@@ -26,6 +26,7 @@ class Course(object):
     >>> h1 is c.get_hole(1)
     True
     """
+
     def __init__(self, name, *args, **kwargs):
         super(Course, self).__init__(*args, **kwargs)
         self._name = name
@@ -53,5 +54,6 @@ class Course(object):
 
     def __str__(self):
         return self.name
+
 
 # vim: filetype=python

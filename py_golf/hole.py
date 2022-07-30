@@ -14,6 +14,7 @@ class Hole(object):
     >>> str(h)
     'Hole 1'
     """
+
     def __init__(self, number, tees, *args, **kwargs):
         super(Hole, self).__init__(*args, **kwargs)
         self._number = number
@@ -32,5 +33,6 @@ class Hole(object):
 
     def __str__(self):
         return "Hole {0}".format(self.number)
+
 
 # vim: filetype=python

@@ -74,4 +74,6 @@ class RoundGenerator(object):
                 round.record_score(player, hole, strokes)
 
         return round
+
+
 # vim: filetype=python

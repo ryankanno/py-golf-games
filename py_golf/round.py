@@ -33,6 +33,7 @@ class Round(object):
     >>> round.current_hole
     2
     """
+
     def __init__(self, course, players=[], *args, **kwargs):
         super(Round, self).__init__(*args, **kwargs)
         self._course = course

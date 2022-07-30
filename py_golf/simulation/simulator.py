@@ -11,8 +11,7 @@ from .generator import RoundGenerator
 from ..tee import TeeMarker
 
 logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s %(levelname)s %(message)s'
+    level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s'
 )
 
 
@@ -20,7 +19,9 @@ COLUMN_WIDTH = 5
 
 
 def print_header(header, max_len):
-    print(header.ljust(max_len),)
+    print(
+        header.ljust(max_len),
+    )
 
 
 def print_column(value, hole_number):

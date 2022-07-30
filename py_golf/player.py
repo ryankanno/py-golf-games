@@ -23,6 +23,7 @@ class Player(object):
     >>> str(p)
     'SpongeBob'
     """
+
     def __init__(self, name, gender, handicap=0, *args, **kwargs):
         super(Player, self).__init__(*args, **kwargs)
         self._name = name
@@ -44,5 +45,6 @@ class Player(object):
 
     def __str__(self):
         return self._name
+
 
 # vim: filetype=python
