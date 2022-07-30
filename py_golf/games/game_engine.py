@@ -11,4 +11,5 @@ class GameEngine(object):
     def enable_game(self, player, game):
         self._games.append(game)
 
+
 # vim: filetype=python

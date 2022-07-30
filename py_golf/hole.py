@@ -14,6 +14,7 @@ class Hole(object):
     >>> str(h)
     'Hole 1'
     """
+
     def __init__(self, number, tees, *args, **kwargs):
         super(Hole, self).__init__(*args, **kwargs)
         self._number = number
@@ -28,12 +29,10 @@ class Hole(object):
         return self._tees
 
     def get_tee(self, marker):
-        try:
-            return self._tees[marker]
-        except:
-            return None
+        return self._tees.get(marker)
 
     def __str__(self):
         return "Hole {0}".format(self.number)
+
 
 # vim: filetype=python

@@ -1,15 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from scorecard import Scorecard
+from .scorecard import Scorecard
 
 
 class Round(object):
     """
-    >>> from player import Gender, Player
+    >>> from .player import Gender, Player
     >>> p1 = Player("SpongeBob", Gender.M, 10)
     >>> p2 = Player("Squarepants", Gender.F, 10)
-    >>> from course import Course
+    >>> from .course import Course
     >>> course = Course("Ocean")
     >>> round = Round(course, [p1, p2])
     >>> course is round.course
@@ -20,7 +20,7 @@ class Round(object):
     >>> round.add_player(p3)
     >>> len(round.players)
     3
-    >>> from scorecard import Scorecard
+    >>> from .scorecard import Scorecard
     >>> x = round.scorecard
     >>> type(x) is Scorecard
     True
@@ -33,6 +33,7 @@ class Round(object):
     >>> round.current_hole
     2
     """
+
     def __init__(self, course, players=[], *args, **kwargs):
         super(Round, self).__init__(*args, **kwargs)
         self._course = course

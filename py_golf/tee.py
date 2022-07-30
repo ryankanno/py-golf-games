@@ -26,6 +26,7 @@ class Tee(object):
     >>> t.handicap
     8
     """
+
     def __init__(self, marker, par, distance, handicap=None, *args, **kwargs):
         super(Tee, self).__init__(*args, **kwargs)
         self._marker = marker
@@ -49,5 +50,6 @@ class Tee(object):
     @property
     def handicap(self):
         return self._handicap
+
 
 # vim: filetype=python

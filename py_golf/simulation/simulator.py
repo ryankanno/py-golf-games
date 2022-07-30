@@ -5,14 +5,13 @@ import logging
 import sys
 import traceback
 
-from generator import CourseGenerator
-from generator import PlayersGenerator
-from generator import RoundGenerator
+from .generator import CourseGenerator
+from .generator import PlayersGenerator
+from .generator import RoundGenerator
 from ..tee import TeeMarker
 
 logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s %(levelname)s %(message)s'
+    level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s'
 )
 
 
@@ -20,7 +19,9 @@ COLUMN_WIDTH = 5
 
 
 def print_header(header, max_len):
-    print header.ljust(max_len),
+    print(
+        header.ljust(max_len),
+    )
 
 
 def print_column(value, hole_number):
@@ -30,13 +31,13 @@ def print_column(value, hole_number):
 
 def print_separator_header(max_player_name_length):
     scorecard_length = max_player_name_length + 18 + (9 * 5) + (9 * 6) + 6
-    print "-" * scorecard_length
+    print("-" * scorecard_length)
 
 
 def pretty_print(round):
-    print "--------------------"
-    print round.course
-    print "--------------------"
+    print("--------------------")
+    print(round.course)
+    print("--------------------")
 
     max_len = 0
 
@@ -47,7 +48,7 @@ def pretty_print(round):
     print_header("Hole", max_len)
     for hole in round.course.holes:
         print_column(hole.number, hole.number)
-    print ""
+    print("")
 
     print_separator_header(max_len)
 
@@ -56,13 +57,13 @@ def pretty_print(round):
         for hole in round.course.holes:
             tee = hole.get_tee(marker)
             print_column(tee.distance, hole.number)
-        print " " + str(round.course.total_distance(marker))
+        print(" " + str(round.course.total_distance(marker)))
 
         print_header("", max_len)
         for hole in round.course.holes:
             tee = hole.get_tee(marker)
             print_column(tee.par, hole.number)
-        print ""
+        print("")
 
     print_separator_header(max_len)
 
@@ -71,7 +72,7 @@ def pretty_print(round):
         for hole in round.course.holes:
             score = round.scorecard.get_score(player, hole.number).score
             print_column(score, hole.number)
-        print " " + str(round.scorecard.get_scores(player).total_score)
+        print(" " + str(round.scorecard.get_scores(player).total_score))
 
 
 if __name__ == '__main__':
@@ -81,7 +82,7 @@ if __name__ == '__main__':
         round = RoundGenerator.generate(course, players)
 
         pretty_print(round)
-    except:
+    except:  # noqa: E722
         trace = traceback.format_exc()
         logging.error("OMGWTFBBQ: {0}".format(trace))
         sys.exit(1)

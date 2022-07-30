@@ -4,8 +4,8 @@
 
 class Course(object):
     """
-    >>> from hole import Hole
-    >>> from tee import TeeMarker, Tee
+    >>> from .hole import Hole
+    >>> from .tee import TeeMarker, Tee
     >>> c = Course("Hawaii Kai")
     >>> c.name
     'Hawaii Kai'
@@ -26,6 +26,7 @@ class Course(object):
     >>> h1 is c.get_hole(1)
     True
     """
+
     def __init__(self, name, *args, **kwargs):
         super(Course, self).__init__(*args, **kwargs)
         self._name = name
@@ -53,5 +54,6 @@ class Course(object):
 
     def __str__(self):
         return self.name
+
 
 # vim: filetype=python

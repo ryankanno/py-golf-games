@@ -47,4 +47,5 @@ class Game(object):
     def post_round(self):
         raise NotImplementedError
 
+
 # vim: filetype=python
