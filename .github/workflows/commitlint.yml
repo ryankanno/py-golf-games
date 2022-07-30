@@ -18,9 +18,6 @@ on:
     types:
       - submitted
 
-permissions:
-  contents: read
-
 jobs:
   pr-title:
     runs-on: ubuntu-latest
