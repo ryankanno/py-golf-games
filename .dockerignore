@@ -1,0 +1,56 @@
+# git
+.git
+.gitignore
+.gitattributes
+
+# devops
+.github
+
+# editor
+.vscode
+.idea
+
+# tools
+.ipynb_checkpoints
+.husky
+.coverage
+.coveragerc
+coveragerc
+coverage.json
+htmlcov
+.flake8
+mypy.ini
+.pylintrc
+pylintrc
+.pre-commit-config.yaml
+commitlint.config.ts
+Dockerfile*
+docker-compose*
+.dockerignore
+
+# python
+*__pycache__
+.mypy_cache
+.pytest_cache
+*.py[cod]
+*$py.class
+tox.ini
+venv
+.venv
+tests/
+dist/
+
+# docs
+README*
+LICENSE
+*.md
+docs
+
+# data
+*.log
+*.sqlite
+.env*
+
+# misc
+.DS_Store
+*.swp
