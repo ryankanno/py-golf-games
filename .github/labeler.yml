@@ -1,0 +1,26 @@
+repo:
+  - ./*
+
+ci/cd:
+  - .github/**/*
+
+dependencies:
+  - pyproject.toml
+
+docker:
+  - Dockerfile*
+  - .dockerignore
+  - docker-compose.yml
+  - docker/**/*
+
+docs:
+  - "docs/**/*"
+  - "**/README.*"
+
+source:
+- any: ['py_golf/**/*', '!docs/*']
+
+test:
+  - tests/**/*
+  - codecov.yml
+  - .coveragerc
