@@ -7,7 +7,7 @@ categories:
   - title: ":wrench: Fixes & Refactoring"
     labels: [fix, refactor]
   - title: ":package: Build System & CI/CD"
-    labels: [build, cicd, github-actions]
+    labels: [build, ci/cd, github-actions]
   - title: ":boom: Breaking Changes"
     labels: [breaking]
   - title: ":pencil: Documentation"
