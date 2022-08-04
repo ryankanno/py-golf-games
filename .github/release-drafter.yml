@@ -15,8 +15,7 @@ categories:
   - title: ":arrow_up: Updated Dependencies"
     labels: [dependencies]
   - title: ":rocket: Performance"
-    labels:
-      - "performance"
+    labels: [performance]
 
 
 version-resolver:
