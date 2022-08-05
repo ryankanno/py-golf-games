@@ -10,6 +10,9 @@ py-golf
 hic sunt dracones
 -----------------
 
+Please don't depend on this package as it is being used to test out a
+migration.
+
 You have been warned.
 
 If you play golf, you'll know what this is doing.  Use at your own risk.
