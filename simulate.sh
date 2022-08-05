@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-export PYTHONPATH=py_golf && python -m py_golf.simulation.simulator
+export PYTHONPATH=py_golf_games && python -m py_golf_games.simulation.simulator

@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "py-golf"
+name = "py-golf-games"
 version = "0.0.0"
 description = "Simulation of golf games"
 authors = ["Ryan <ryankanno@localkinegrinds.com>"]
 packages = [
-    { include = "py_golf" },
+    { include = "py_golf_games" },
 ]
 
 [tool.poetry.dependencies]
@@ -65,7 +65,7 @@ multi_line_output = 3
 use_parentheses = true
 known_third_party = []
 default_section = "THIRDPARTY"
-known_first_party = "py_golf"
+known_first_party = "py_golf_games"
 sections = "FUTURE,STDLIB,THIRDPARTY,FIRSTPARTY,LOCALFOLDER"
 
 [build-system]

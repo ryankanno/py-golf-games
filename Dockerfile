@@ -9,7 +9,7 @@ ENV PYTHONFAULTHANDLER=1 \
 	PIP_DEFAULT_TIMEOUT=100 \
 	POETRY_VERSION=1.1.12
 
-ARG REPOSITORY=https://github.com/ryankanno/py-golf
+ARG REPOSITORY=https://github.com/ryankanno/py-golf-games
 ARG BUILD_DATETIME
 ARG VERSION
 ARG REVISION
@@ -24,7 +24,7 @@ ENV BRANCH ${BRANCH:-main}
 LABEL maintainers="Ryan Kanno <ryankanno@localkinegrinds.com>"
 
 LABEL org.opencontainers.image.created="${BUILD_DATETIME}" \
-      org.opencontainers.image.title="py-golf" \
+      org.opencontainers.image.title="py-golf-games" \
       org.opencontainers.image.description="Library to help simulate golf games" \
       org.opencontainers.image.authors="ryankanno@localkinegrinds.com" \
       org.opencontainers.image.revision="${REVISION}" \
@@ -48,7 +48,7 @@ COPY poetry.lock /poetry.lock
 
 RUN /bin/bash -c "poetry config virtualenvs.create false && poetry install --no-dev --no-interaction --no-ansi --no-root"
 
-COPY ./py_golf /project/py_golf
+COPY ./py_golf_games /project/py_golf_games
 
 ENV PYTHONPATH "${PYTHONPATH}:/project"
 
