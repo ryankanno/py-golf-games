@@ -2,11 +2,24 @@
 name = "py-golf-games"
 version = "0.0.0"
 description = "Simulation of golf games"
-authors = ["Ryan <ryankanno@localkinegrinds.com>"]
+authors = ["Ryan <ryankanno@localkinegrinds>"]
+maintainers = ["Ryan <ryankanno@localkinegrinds>"]
+license = "MIT"
+readme = "README.rst"
 packages = [
     { include = "py_golf_games" },
 ]
-readme = "README.rst"
+include = [
+    { path = "tests", format = "sdist" },
+    "LICENSE"
+]
+
+repository = "https://github.com/ryankanno/py-golf-games"
+keywords = ["golf"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python"
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -52,7 +65,6 @@ exclude = '''
      | build
      | dist
      | __pypackages__
-     | \{\{cookiecutter\.package_name\}\}\/tests
  )/
 )
 '''
