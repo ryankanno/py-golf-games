@@ -1,7 +1,0 @@
-include LICENSE
-include MANIFEST.in
-include README.rst
-recursive-include py_golf_games *.py
-recursive-include tests *.py
-recursive-include docs *
-prune *.pyc
