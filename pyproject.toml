@@ -6,6 +6,7 @@ authors = ["Ryan <ryankanno@localkinegrinds.com>"]
 packages = [
     { include = "py_golf_games" },
 ]
+readme = "README.rst"
 
 [tool.poetry.dependencies]
 python = "^3.8"
