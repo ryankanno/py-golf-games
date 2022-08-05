@@ -67,6 +67,9 @@ jobs:
           name: poetry_build
           path: dist/
 
+      - name: see path
+        run: ls -R
+
       - name: Install Poetry ${{ env.POETRY_VERSION }}
         run: python -m pip install poetry==${{ env.POETRY_VERSION }}
 
@@ -96,6 +99,9 @@ jobs:
         with:
           name: poetry_build
           path: dist/
+
+      - name: see path
+        run: ls -R
 
       - name: Install Poetry ${{ env.POETRY_VERSION }}
         run: python -m pip install poetry==${{ env.POETRY_VERSION }}
