@@ -67,11 +67,10 @@ jobs:
           name: poetry_build
           path: dist/
 
-      - name: see path
-        run: ls -R
-
       - name: Install Poetry ${{ env.POETRY_VERSION }}
         run: python -m pip install poetry==${{ env.POETRY_VERSION }}
+
+      - run: poetry version $LIB_VERSION
 
       - name: poetry configure TestPyPI Repo
         run: poetry config repositories.test-pypi https://test.pypi.org/legacy/
@@ -100,11 +99,10 @@ jobs:
           name: poetry_build
           path: dist/
 
-      - name: see path
-        run: ls -R
-
       - name: Install Poetry ${{ env.POETRY_VERSION }}
         run: python -m pip install poetry==${{ env.POETRY_VERSION }}
+
+      - run: poetry version $LIB_VERSION
 
       - name: poetry configure PyPI Token
         run: poetry config pypi-token.pypi ${{ secrets.PYPI_API_TOKEN }}
