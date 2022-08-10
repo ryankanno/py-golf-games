@@ -32,7 +32,7 @@ jobs:
         id: commitlint
         continue-on-error: true
         with:
-          configFile: commitlint.config.js
+          configFile: .commitlint.config.js
 
       - name: Validate PR Title
         id: prTitle
@@ -115,4 +115,3 @@ jobs:
         with:
           script: |
             core.setFailed("There were problems with this PR's commit messages")
-
