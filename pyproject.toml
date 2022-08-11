@@ -4,7 +4,6 @@ version = "0.0.0"
 description = "Simulation of golf games"
 authors = ["Ryan <ryankanno@localkinegrinds.com>"]
 maintainers = ["Ryan <ryankanno@localkinegrinds.com>"]
-license = "MIT"
 readme = "README.rst"
 packages = [
     { include = "py_golf_games" },
