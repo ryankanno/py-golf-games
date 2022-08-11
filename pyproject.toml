@@ -16,36 +16,63 @@ include = [
 
 repository = "https://github.com/ryankanno/py-golf-games"
 keywords = ["golf"]
+license = "MIT"
 classifiers = [
     "Development Status :: 4 - Beta",
-    "Programming Language :: Python"
+    "Programming Language :: Python",
 ]
 
 [tool.poetry.dependencies]
 python = "^3.8"
+structlog = "^21.1.0"
 
 [tool.poetry.dev-dependencies]
+dunamai = "^1.12.0"
 flake8 = "^4.0.1"
 flake8-isort = "^4.1.2"
+ipython = "^7.15.0"
 isort = "^5.10.1"
+konch = "^4.2.2"
 mypy = "^0.971"
 pdbpp = "^0.10.3"
 pre-commit = "^2.20.0"
 pytest = "^7.1.2"
-pytest-black = "^0.3.12"
 pytest-cov = "^3.0.0"
-pytest-flake8 = "^1.1.1"
 pytest-mock = "^3.8.2"
-pytest-mypy = "^0.9.1"
 pytest-randomly = "^3.12.0"
 pytest-xdist = "^2.5.0"
+sphinx = "^3.0.4"
 tox = "^3.25.1"
 black = "^22.6.0"
+hypothesis = "^6.17.0"
+mutmut = "^2.2.0"
+
+[tool.mypy]
+python_version = "3.8"
+check_untyped_defs = true
+disallow_any_generics = true
+disallow_incomplete_defs = true
+disallow_subclassing_any = true
+disallow_untyped_calls = true
+disallow_untyped_decorators = true
+disallow_untyped_defs = true
+follow_imports = "normal"
+ignore_missing_imports = true
+no_implicit_optional = true
+no_implicit_reexport = false
+show_error_codes = true
+show_error_context = true
+strict_equality = true
+strict_optional = true
+warn_redundant_casts = true
+warn_return_any = true
+warn_unused_configs = true
+warn_unused_ignores = false
 
 [tool.black]
 line-length = 79
 skip-string-normalization = true
-target_version = ['py37']
+target_version = ['py38']
 include = '\.pyi?$'
 exclude = '''
 (
@@ -65,9 +92,36 @@ exclude = '''
      | build
      | dist
      | __pypackages__
+     | \{\{cookiecutter\.package_name\}\}\/tests
  )/
 )
 '''
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q -n auto"
+testpaths = [
+    "tests",
+]
+
+[tool.coverage.run]
+parallel = true
+branch = true
+source = ["py_golf_games"]
+omit = [
+    "*/python?.?/*",
+    "*/tests/*"
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "import",
+]
+show_missing = true
+skip_covered = false
 
 [tool.isort]
 force_grid_wrap = 0
