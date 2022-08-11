@@ -1,46 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import typing
 
-class PlayerScores(object):
-    """
-    >>> from .player import Gender, Player
-    >>> p = Player("SpongeBob", Gender.M, 10)
-    >>> ps = PlayerScores(p)
-    >>> ps.record_score(1, 5)
-    >>> ps.record_score(2, 3)
-    >>> ps.total_score
-    8
-    >>> hole_score = ps.get_score(1)
-    >>> hole_score.hole_number
-    1
-    >>> hole_score.score
-    5
-    """
-
-    def __init__(self, player, *args, **kwargs):
-        super(PlayerScores, self).__init__(*args, **kwargs)
-        self._player = player
-        self._hole_scores = {}
-
-    def record_score(self, hole_number, score):
-        self._hole_scores[hole_number] = HoleScore(hole_number, score)
-
-    def get_score(self, hole_number):
-        return (
-            self._hole_scores[hole_number]
-            if hole_number in self._hole_scores
-            else None
-        )
-
-    @property
-    def total_score(self):
-        return sum(
-            [hole_score.score for hole_score in self._hole_scores.values()]
-        )
-
-    def __iter__(self):
-        return iter(self._hole_scores.values())
+from .player import Player
 
 
 class HoleScore(object):
@@ -58,26 +21,67 @@ class HoleScore(object):
     10
     """
 
-    def __init__(self, hole_number, score, *args, **kwargs):
-        super(HoleScore, self).__init__(*args, **kwargs)
+    def __init__(self, hole_number: int, score: int):
+        super(HoleScore, self).__init__()
         self.hole_number = hole_number
         self.score = score
 
     @property
-    def hole_number(self):
+    def hole_number(self) -> int:
         return self._hole_number
 
     @hole_number.setter
-    def hole_number(self, value):
+    def hole_number(self, value: int) -> None:
         self._hole_number = value
 
     @property
-    def score(self):
+    def score(self) -> int:
         return self._score
 
     @score.setter
-    def score(self, value):
+    def score(self, value: int) -> None:
         self._score = value
+
+
+class PlayerScores(object):
+    """
+    >>> from .player import Gender, Player
+    >>> p = Player("SpongeBob", Gender.M, 10)
+    >>> ps = PlayerScores(p)
+    >>> ps.record_score(1, 5)
+    >>> ps.record_score(2, 3)
+    >>> ps.total_score
+    8
+    >>> hole_score = ps.get_score(1)
+    >>> hole_score.hole_number
+    1
+    >>> hole_score.score
+    5
+    """
+
+    def __init__(self, player: Player):
+        super(PlayerScores, self).__init__()
+        self._player = player
+        self._hole_scores: typing.Dict[int, HoleScore] = {}
+
+    def record_score(self, hole_number: int, score: int) -> None:
+        self._hole_scores[hole_number] = HoleScore(hole_number, score)
+
+    def get_score(self, hole_number: int) -> typing.Optional[HoleScore]:
+        return (
+            self._hole_scores[hole_number]
+            if hole_number in self._hole_scores
+            else None
+        )
+
+    @property
+    def total_score(self) -> int:
+        return sum(
+            hole_score.score for hole_score in self._hole_scores.values()
+        )
+
+    def __iter__(self) -> typing.Iterator[HoleScore]:
+        return iter(self._hole_scores.values())
 
 
 class Scorecard(object):
@@ -96,24 +100,28 @@ class Scorecard(object):
     3
     """
 
-    def __init__(self, *args, **kwargs):
-        super(Scorecard, self).__init__(*args, **kwargs)
-        self._player_scores = {}
+    def __init__(self) -> None:
+        super(Scorecard, self).__init__()
+        self._player_scores: typing.Dict[Player, PlayerScores] = {}
 
-    def record_score(self, player, hole_number, score):
+    def record_score(
+        self, player: Player, hole_number: int, score: int
+    ) -> None:
         if player not in self._player_scores:
             self._player_scores[player] = PlayerScores(player)
 
         self._player_scores[player].record_score(hole_number, score)
 
-    def get_scores(self, player):
+    def get_scores(self, player: Player) -> typing.Optional[PlayerScores]:
         return (
             self._player_scores[player]
             if player in self._player_scores
             else None
         )
 
-    def get_score(self, player, hole_number):
+    def get_score(
+        self, player: Player, hole_number: int
+    ) -> typing.Optional[HoleScore]:
         return (
             self._player_scores[player].get_score(hole_number)
             if player in self._player_scores

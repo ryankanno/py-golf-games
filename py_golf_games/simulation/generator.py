@@ -1,19 +1,21 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import random
+import typing
+
 from ..course import Course
 from ..hole import Hole
-from ..player import Player
 from ..player import Gender
+from ..player import Player
 from ..round import Round
 from ..tee import Tee
 from ..tee import TeeMarker
-import random
 
 
 class CourseGenerator(object):
     @classmethod
-    def generate(cls, name, num_holes):
+    def generate(cls, name: str, num_holes: int) -> Course:
         course = Course(name)
         for hole_number in range(1, num_holes + 1):
             hole = HoleGenerator.generate(hole_number)
@@ -23,14 +25,14 @@ class CourseGenerator(object):
 
 class HoleGenerator(object):
     @classmethod
-    def generate(cls, hole_number):
+    def generate(cls, hole_number: int) -> Hole:
         tees = TeesGenerator.generate()
         return Hole(hole_number, tees)
 
 
 class TeesGenerator(object):
     @classmethod
-    def generate(cls):
+    def generate(cls) -> typing.Dict[TeeMarker, Tee]:
         tees = {}
         for marker in list(TeeMarker):
             tee = TeeGenerator.generate(marker)
@@ -40,7 +42,7 @@ class TeesGenerator(object):
 
 class TeeGenerator(object):
     @classmethod
-    def generate(cls, tee_marker):
+    def generate(cls, tee_marker: TeeMarker) -> Tee:
         par = random.randint(3, 5)
         distance = random.randrange(250, 550, 50)
         return Tee(tee_marker, par, distance)
@@ -48,24 +50,24 @@ class TeeGenerator(object):
 
 class PlayersGenerator(object):
     @classmethod
-    def _random_name(cls):
+    def _random_name(cls) -> str:
         return "Player " + str(int(random.random() * 1024))
 
     @classmethod
-    def _random_gender(cls):
+    def _random_gender(cls) -> Gender:
         return random.choice(list(Gender))
 
     @classmethod
-    def generate(cls, max_players=4):
+    def generate(cls, max_players: int = 4) -> typing.List[Player]:
         players = []
-        for x in range(random.randint(1, max_players)):
+        for _ in range(random.randint(1, max_players)):
             players.append(Player(cls._random_name(), cls._random_gender()))
         return players
 
 
 class RoundGenerator(object):
     @classmethod
-    def generate(cls, course, players):
+    def generate(cls, course: Course, players: typing.List[Player]) -> Round:
         round = Round(course, players)
 
         for player in players:

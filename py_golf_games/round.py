@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import typing
+
+from .course import Course
+from .player import Player
 from .scorecard import Scorecard
 
 
@@ -34,45 +38,48 @@ class Round(object):
     2
     """
 
-    def __init__(self, course, players=[], *args, **kwargs):
-        super(Round, self).__init__(*args, **kwargs)
+    def __init__(self, course: Course, players: typing.List[Player]) -> None:
+        super(Round, self).__init__()
         self._course = course
         self._players = players
         self._scorecard = Scorecard()
-        self._current_hole = None
+        self._current_hole: typing.Optional[int] = None
 
     @property
-    def course(self):
+    def course(self) -> Course:
         return self._course
 
     @property
-    def players(self):
+    def players(self) -> typing.List[Player]:
         return self._players
 
     @property
-    def scorecard(self):
+    def scorecard(self) -> Scorecard:
         return self._scorecard
 
     @property
-    def current_hole(self):
+    def current_hole(self) -> typing.Optional[int]:
         return self._current_hole
 
     @current_hole.setter
-    def current_hole(self, value):
+    def current_hole(self, value: typing.Optional[int]) -> None:
         self._current_hole = value
 
-    def add_player(self, player):
+    def add_player(self, player: Player) -> None:
         self._players.append(player)
 
-    def record_score(self, player, hole_number, score):
+    def record_score(
+        self, player: Player, hole_number: int, score: int
+    ) -> None:
         if player in self._players and self.course.get_hole(hole_number):
             self.scorecard.record_score(player, hole_number, score)
 
-    def start(self):
+    def start(self) -> None:
         self.current_hole = 1
 
-    def advance_hole(self):
-        self.current_hole += 1
+    def advance_hole(self) -> None:
+        if self.current_hole is not None:
+            self.current_hole += 1
 
 
 # vim: filetype=python

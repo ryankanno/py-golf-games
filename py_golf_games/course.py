@@ -1,6 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import typing
+
+from .hole import Hole
+from .tee import TeeMarker
+
 
 class Course(object):
     """
@@ -27,32 +32,40 @@ class Course(object):
     True
     """
 
-    def __init__(self, name, *args, **kwargs):
-        super(Course, self).__init__(*args, **kwargs)
+    def __init__(self, name: str):
+        super(Course, self).__init__()
         self._name = name
-        self._holes = {}
+        self._holes: typing.Dict[int, Hole] = {}
 
-    def add_hole(self, hole_number, hole):
+    def add_hole(self, hole_number: int, hole: Hole) -> None:
         self._holes[hole_number] = hole
 
-    def get_hole(self, hole_number):
+    def get_hole(self, hole_number: int) -> typing.Optional[Hole]:
         return self._holes[hole_number] if hole_number in self._holes else None
 
     @property
-    def holes(self):
+    def holes(self) -> typing.ValuesView[Hole]:
         return self._holes.values()
 
     @property
-    def name(self):
+    def name(self) -> str:
         return self._name
 
-    def total_distance(self, tee_marker):
-        return sum([hole.get_tee(tee_marker).distance for hole in self.holes])
+    def total_distance(self, tee_marker: TeeMarker) -> int:
+        total_distance = 0
+        for hole in self.holes:
+            tee = hole.get_tee(tee_marker)
+            total_distance += tee.distance if tee else 0
+        return total_distance
 
-    def total_par(self, tee_marker):
-        return sum([hole.get_tee(tee_marker).par for hole in self.holes])
+    def total_par(self, tee_marker: TeeMarker) -> int:
+        total_par = 0
+        for hole in self.holes:
+            tee = hole.get_tee(tee_marker)
+            total_par += tee.par if tee else 0
+        return total_par
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
 
 
