@@ -13,7 +13,7 @@ on:
       - Dockerfile
 
 jobs:
-  lintdocker:
+  hadolint:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -50,6 +50,6 @@ jobs:
               body: output
             })
 
-      - name: Set Status
+      - name: Set Overall Status
         if: steps.hadolint.outcome == 'failure'
         run: exit 1

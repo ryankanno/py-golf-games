@@ -16,9 +16,11 @@ docker:
 docs:
   - "docs/**/*"
   - "**/README.*"
+  - "AUTHORS.*"
+  - "HISTORY.*"
 
 source:
-- any: ['py_golf/**/*', '!docs/*']
+- any: ['py_golf_games/**/*', '!docs/*']
 
 test:
   - tests/**/*
