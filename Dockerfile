@@ -1,13 +1,37 @@
-ARG INSTALL_PYTHON_VERSION=${INSTALL_PYTHON_VERSION:-3.10.1}
-FROM python:${INSTALL_PYTHON_VERSION}-slim-buster AS base
+FROM python:3.8-slim-buster as base
 
 ENV PYTHONFAULTHANDLER=1 \
-	PYTHONUNBUFFERED=1 \
-	PYTHONHASHSEED=random \
-	PIP_NO_CACHE_DIR=off \
-	PIP_DISABLE_PIP_VERSION_CHECK=on \
-	PIP_DEFAULT_TIMEOUT=100 \
-	POETRY_VERSION=1.1.12
+  PYTHONUNBUFFERED=1 \
+  PYTHONHASHSEED=random
+
+FROM base as builder
+
+ENV PIP_NO_CACHE_DIR=off \
+  PIP_DISABLE_PIP_VERSION_CHECK=on \
+  PIP_DEFAULT_TIMEOUT=100 \
+  PATH="~/.local/bin:/venv/bin:${PATH}" \
+  VIRTUAL_ENV="/venv" \
+  POETRY_VERSION=1.1.14 \
+  POETRY_VIRTUALENVS_CREATE=false
+
+WORKDIR /app
+
+SHELL ["/bin/bash", "-exo", "pipefail",  "-c"]
+
+RUN apt-get update \
+    && apt-get install --no-install-recommends -y curl \
+	&& apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN curl -sSL https://install.python-poetry.org | python3 - --version ${POETRY_VERSION}
+RUN python3 -m venv ${VIRTUAL_ENV}
+
+COPY pyproject.toml poetry.lock ./
+RUN poetry install --no-dev --no-interaction --no-ansi --no-root
+COPY . ./
+RUN poetry install --no-interaction --no-ansi
+
+FROM base as final
 
 ARG REPOSITORY=https://github.com/ryankanno/py-golf-games
 ARG BUILD_DATETIME
@@ -21,6 +45,10 @@ ENV VERSION ${VERSION:-null}
 ENV REVISION ${REVISION:-null}
 ENV BRANCH ${BRANCH:-main}
 
+ENV PATH="/venv/bin:${PATH}" \
+  VIRTUAL_ENV="/venv" \
+  PYTHONPATH="/app"
+
 LABEL maintainers="Ryan Kanno <ryankanno@localkinegrinds.com>"
 
 LABEL org.opencontainers.image.created="${BUILD_DATETIME}" \
@@ -32,27 +60,10 @@ LABEL org.opencontainers.image.created="${BUILD_DATETIME}" \
       org.opencontainers.image.version="${VERSION}" \
       org.opencontainers.image.licenses="MIT"
 
-SHELL ["/bin/bash", "-exo", "pipefail",  "-c"]
+COPY --from=builder ${VIRTUAL_ENV} ${VIRTUAL_ENV}
+COPY --from=builder /app /app
 
-RUN apt-get update && \
-    apt-get install --no-install-recommends -y wget python3-pip && \
-	apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x '/docker-entrypoint.sh'
 
-RUN wget -qO- https://install.python-poetry.org | POETRY_VERSION=$POETRY_VERSION python3
-
-ENV PATH="~/.local/bin:${PATH}"
-
-COPY pyproject.toml /pyproject.toml
-COPY poetry.lock /poetry.lock
-
-RUN /bin/bash -c "poetry config virtualenvs.create false && poetry install --no-dev --no-interaction --no-ansi --no-root"
-
-COPY ./py_golf_games /project/py_golf_games
-
-ENV PYTHONPATH "${PYTHONPATH}:/project"
-
-COPY ./entrypoint.sh /entrypoint.sh
-
-# Specify entrypoint and default command
-ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
+ENTRYPOINT ["/docker-entrypoint.sh"]
