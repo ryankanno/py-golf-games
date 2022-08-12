@@ -22,29 +22,26 @@ htmlcov
 mypy.ini
 .pylintrc
 pylintrc
+pytest.ini
 .pre-commit-config.yaml
+.konchrc
+.mypy_cache
+.pytest_cache
 commitlint.config.ts
 Dockerfile*
 docker-compose*
 .dockerignore
+Makefile
+tox.ini
 
 # python
 *__pycache__
-.mypy_cache
-.pytest_cache
 *.py[cod]
 *$py.class
-tox.ini
 venv
 .venv
 tests/
 dist/
-
-# docs
-README*
-LICENSE
-*.md
-docs
 
 # data
 *.log

@@ -1,0 +1,53 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import datetime
+import os
+import pprint
+import re
+import sys
+import time
+
+import konch
+
+import py_golf_games
+
+# Available options:
+#   'context', 'banner', 'shell', 'prompt',
+#   'hide_context', 'ipy_extensions', 'ipy_autoreload'
+
+banner = '''
+Welcome to the py_golf_games shell. Please edit .konchrc file if
+you'd like to add additional dependencies.
+'''
+
+
+konch.config({
+    'banner': banner,
+    'context': {
+        'os': os,
+        'sys': sys,
+        're': re,
+        'time': time,
+        'dt': datetime.datetime,
+        'pp': pprint.pprint,
+        'speak': konch.speak,
+        'py_golf_games': py_golf_games
+    },
+    'shell': 'ipython',
+    'ipy_autoreload': True,
+    'ipy_extensions': [
+        # Ipython extensions here
+    ]
+})
+
+
+def setup():
+    pass
+
+
+def teardown():
+    pass
+
+
+# vim: filetype=python

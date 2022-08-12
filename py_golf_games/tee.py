@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import typing
 from enum import Enum
 from enum import unique
 
@@ -27,8 +28,14 @@ class Tee(object):
     8
     """
 
-    def __init__(self, marker, par, distance, handicap=None, *args, **kwargs):
-        super(Tee, self).__init__(*args, **kwargs)
+    def __init__(
+        self,
+        marker: TeeMarker,
+        par: int,
+        distance: int,
+        handicap: typing.Optional[int] = None,
+    ) -> None:
+        super(Tee, self).__init__()
         self._marker = marker
         self._par = par
         self._distance = distance
@@ -36,19 +43,19 @@ class Tee(object):
         assert self._marker in list(TeeMarker)
 
     @property
-    def par(self):
+    def par(self) -> int:
         return self._par
 
     @property
-    def marker(self):
+    def marker(self) -> TeeMarker:
         return self._marker
 
     @property
-    def distance(self):
+    def distance(self) -> int:
         return self._distance
 
     @property
-    def handicap(self):
+    def handicap(self) -> typing.Optional[int]:
         return self._handicap
 
 

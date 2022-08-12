@@ -24,26 +24,26 @@ class Player(object):
     'SpongeBob'
     """
 
-    def __init__(self, name, gender, handicap=0, *args, **kwargs):
-        super(Player, self).__init__(*args, **kwargs)
+    def __init__(self, name: str, gender: Gender, handicap: int = 0):
+        super().__init__()
         self._name = name
         self._gender = gender
         self._handicap = handicap
         assert self._gender in list(Gender)
 
     @property
-    def name(self):
+    def name(self) -> str:
         return self._name
 
     @property
-    def gender(self):
+    def gender(self) -> Gender:
         return self._gender
 
     @property
-    def handicap(self):
+    def handicap(self) -> int:
         return self._handicap
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self._name
 
 

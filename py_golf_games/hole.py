@@ -1,6 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import typing
+
+from .tee import Tee
+from .tee import TeeMarker
+
 
 class Hole(object):
     """
@@ -15,24 +20,24 @@ class Hole(object):
     'Hole 1'
     """
 
-    def __init__(self, number, tees, *args, **kwargs):
-        super(Hole, self).__init__(*args, **kwargs)
+    def __init__(self, number: int, tees: typing.Dict[TeeMarker, Tee]) -> None:
+        super(Hole, self).__init__()
         self._number = number
         self._tees = tees or {}
 
     @property
-    def number(self):
+    def number(self) -> int:
         return self._number
 
     @property
-    def tees(self):
+    def tees(self) -> typing.Dict[TeeMarker, Tee]:
         return self._tees
 
-    def get_tee(self, marker):
+    def get_tee(self, marker: TeeMarker) -> typing.Optional[Tee]:
         return self._tees.get(marker)
 
-    def __str__(self):
-        return "Hole {0}".format(self.number)
+    def __str__(self) -> str:
+        return f"Hole {self.number}"
 
 
 # vim: filetype=python
