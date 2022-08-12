@@ -4,7 +4,7 @@
 import abc
 import typing
 
-from ..players import Player
+from ..player import Player
 
 
 class Game(object):
