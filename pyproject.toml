@@ -131,6 +131,11 @@ default_section = "THIRDPARTY"
 known_first_party = "py_golf_games"
 sections = "FUTURE,STDLIB,THIRDPARTY,FIRSTPARTY,LOCALFOLDER"
 
+[tool.vulture]
+make_whitelist = true
+min_confidence = 80
+paths = ["py_golf_games", "tests"]
+
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
