@@ -26,7 +26,7 @@ repos:
     rev: 22.6.0
     hooks:
       - id: black
-        args: [--safe, --quiet]
+        args: [--safe, --quiet, --config, 'pyproject.toml']
   - repo: https://github.com/asottile/blacken-docs
     rev: v1.12.1
     hooks:
@@ -64,3 +64,11 @@ repos:
     hooks:
     -   id: detect-secrets
         args: ['--baseline', '.secrets.baseline']
+  - repo: https://github.com/crate-ci/typos
+    rev: v1.11.1
+    hooks:
+      - id: typos
+  - repo: https://github.com/jendrikseipp/vulture
+    rev: 'v2.5'
+    hooks:
+      - id: vulture
