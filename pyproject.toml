@@ -10,7 +10,7 @@ packages = [
 ]
 include = [
     { path = "tests", format = "sdist" },
-    "LICENSE"
+    { path = "LICENSE" }
 ]
 
 repository = "https://github.com/ryankanno/py-golf-games"
