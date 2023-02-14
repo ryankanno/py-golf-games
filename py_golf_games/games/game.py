@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
 
 import abc
 import typing
@@ -7,12 +6,11 @@ import typing
 from ..player import Player
 
 
-class Game(object):
-
+class Game:
     __metaclass__ = abc.ABCMeta
 
     def __init__(self, name: str, players: typing.List[Player]) -> None:
-        super(Game, self).__init__()
+        super().__init__()
         self._name = name
         self._players = {}
         for player in players:

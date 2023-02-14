@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
 
 import typing
 
@@ -8,7 +7,7 @@ from .player import Player
 from .scorecard import Scorecard
 
 
-class Round(object):
+class Round:
     """
     >>> from .player import Gender, Player
     >>> p1 = Player("SpongeBob", Gender.M, 10)
@@ -39,7 +38,7 @@ class Round(object):
     """
 
     def __init__(self, course: Course, players: typing.List[Player]) -> None:
-        super(Round, self).__init__()
+        super().__init__()
         self._course = course
         self._players = players
         self._scorecard = Scorecard()

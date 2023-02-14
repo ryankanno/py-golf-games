@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
 
 import typing
 
@@ -8,7 +7,7 @@ from ..round import Round
 from .game import Game
 
 
-class GameEngine(object):
+class GameEngine:
     def __init__(self, round: Round):
         super().__init__()
         self._round = round

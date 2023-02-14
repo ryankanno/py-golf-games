@@ -1,12 +1,11 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
 
 import typing
 
 from .player import Player
 
 
-class HoleScore(object):
+class HoleScore:
     """
     >>> score = HoleScore(1, 4)
     >>> score.hole_number
@@ -22,7 +21,7 @@ class HoleScore(object):
     """
 
     def __init__(self, hole_number: int, score: int):
-        super(HoleScore, self).__init__()
+        super().__init__()
         self.hole_number = hole_number
         self.score = score
 
@@ -43,7 +42,7 @@ class HoleScore(object):
         self._score = value
 
 
-class PlayerScores(object):
+class PlayerScores:
     """
     >>> from .player import Gender, Player
     >>> p = Player("SpongeBob", Gender.M, 10)
@@ -60,7 +59,7 @@ class PlayerScores(object):
     """
 
     def __init__(self, player: Player):
-        super(PlayerScores, self).__init__()
+        super().__init__()
         self._player = player
         self._hole_scores: typing.Dict[int, HoleScore] = {}
 
@@ -84,7 +83,7 @@ class PlayerScores(object):
         return iter(self._hole_scores.values())
 
 
-class Scorecard(object):
+class Scorecard:
     """
     >>> from .player import Gender, Player
     >>> p1 = Player("SpongeBob", Gender.M, 10)
@@ -101,7 +100,7 @@ class Scorecard(object):
     """
 
     def __init__(self) -> None:
-        super(Scorecard, self).__init__()
+        super().__init__()
         self._player_scores: typing.Dict[Player, PlayerScores] = {}
 
     def record_score(
