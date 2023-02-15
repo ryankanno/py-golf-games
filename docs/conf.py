@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # type: ignore
 #
 # py_golf_games documentation build configuration file, created by
@@ -56,9 +55,9 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'py_golf_games'
-copyright = u'2015, Ryan Kanno'
-author = u'Ryan Kanno'
+project = 'py_golf_games'
+copyright = '2015, Ryan Kanno'
+author = 'Ryan Kanno'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -232,8 +231,8 @@ latex_documents = [
     (
         master_doc,
         'py_golf_games.tex',
-        u'py_golf_games Documentation',
-        u'Ryan Kanno',
+        'py_golf_games Documentation',
+        'Ryan Kanno',
         'manual',
     ),
 ]
@@ -267,7 +266,7 @@ man_pages = [
     (
         master_doc,
         'py_golf_games',
-        u'py_golf_games Documentation',
+        'py_golf_games Documentation',
         [author],
         1,
     )
@@ -286,7 +285,7 @@ texinfo_documents = [
     (
         master_doc,
         'py_golf_games',
-        u'py_golf_games Documentation',
+        'py_golf_games Documentation',
         author,
         'py_golf_games',
         'One line description of project.',

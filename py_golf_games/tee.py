@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
 
 import typing
 from enum import Enum
@@ -15,7 +14,7 @@ class TeeMarker(Enum):
     Green = 5
 
 
-class Tee(object):
+class Tee:
     """
     >>> t = Tee(TeeMarker.White, 3, 310, 8)
     >>> t.par
@@ -35,7 +34,7 @@ class Tee(object):
         distance: int,
         handicap: typing.Optional[int] = None,
     ) -> None:
-        super(Tee, self).__init__()
+        super().__init__()
         self._marker = marker
         self._par = par
         self._distance = distance
