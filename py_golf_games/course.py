@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
 
 import typing
 
@@ -7,7 +6,7 @@ from .hole import Hole
 from .tee import TeeMarker
 
 
-class Course(object):
+class Course:
     """
     >>> from .hole import Hole
     >>> from .tee import TeeMarker, Tee
@@ -33,7 +32,7 @@ class Course(object):
     """
 
     def __init__(self, name: str):
-        super(Course, self).__init__()
+        super().__init__()
         self._name = name
         self._holes: typing.Dict[int, Hole] = {}
 

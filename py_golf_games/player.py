@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
 
 from enum import Enum
 from enum import unique
@@ -11,7 +10,7 @@ class Gender(Enum):
     F = 2
 
 
-class Player(object):
+class Player:
     """
     >>> p = Player("SpongeBob", Gender.M, 10)
     >>> p.name

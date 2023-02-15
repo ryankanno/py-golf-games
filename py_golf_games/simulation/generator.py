@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
 
 import random
 import typing
@@ -13,7 +12,7 @@ from ..tee import Tee
 from ..tee import TeeMarker
 
 
-class CourseGenerator(object):
+class CourseGenerator:
     @classmethod
     def generate(cls, name: str, num_holes: int) -> Course:
         course = Course(name)
@@ -23,14 +22,14 @@ class CourseGenerator(object):
         return course
 
 
-class HoleGenerator(object):
+class HoleGenerator:
     @classmethod
     def generate(cls, hole_number: int) -> Hole:
         tees = TeesGenerator.generate()
         return Hole(hole_number, tees)
 
 
-class TeesGenerator(object):
+class TeesGenerator:
     @classmethod
     def generate(cls) -> typing.Dict[TeeMarker, Tee]:
         tees = {}
@@ -40,7 +39,7 @@ class TeesGenerator(object):
         return tees
 
 
-class TeeGenerator(object):
+class TeeGenerator:
     @classmethod
     def generate(cls, tee_marker: TeeMarker) -> Tee:
         par = random.randint(3, 5)
@@ -48,7 +47,7 @@ class TeeGenerator(object):
         return Tee(tee_marker, par, distance)
 
 
-class PlayersGenerator(object):
+class PlayersGenerator:
     @classmethod
     def _random_name(cls) -> str:
         return "Player " + str(int(random.random() * 1024))
@@ -65,7 +64,7 @@ class PlayersGenerator(object):
         return players
 
 
-class RoundGenerator(object):
+class RoundGenerator:
     @classmethod
     def generate(cls, course: Course, players: typing.List[Player]) -> Round:
         round = Round(course, players)

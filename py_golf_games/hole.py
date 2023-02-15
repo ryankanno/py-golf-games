@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
 
 import typing
 
@@ -7,7 +6,7 @@ from .tee import Tee
 from .tee import TeeMarker
 
 
-class Hole(object):
+class Hole:
     """
     >>> h = Hole(1, {})
     >>> h.number
@@ -21,7 +20,7 @@ class Hole(object):
     """
 
     def __init__(self, number: int, tees: typing.Dict[TeeMarker, Tee]) -> None:
-        super(Hole, self).__init__()
+        super().__init__()
         self._number = number
         self._tees = tees or {}
 
