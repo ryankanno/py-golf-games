@@ -23,7 +23,7 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.8"
-structlog = ">=21.1,<23.0"
+structlog = ">=21.1,<24.0"
 
 [tool.poetry.dev-dependencies]
 dunamai = "^1.15.0"
