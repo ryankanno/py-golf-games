@@ -402,14 +402,14 @@ files = [
 
 [[package]]
 name = "dunamai"
-version = "1.15.0"
+version = "1.16.1"
 description = "Dynamic version generation"
 category = "dev"
 optional = false
 python-versions = ">=3.5,<4.0"
 files = [
-    {file = "dunamai-1.15.0-py3-none-any.whl", hash = "sha256:646d7a6c07d0ec8412ac43c1a3546f1d1b52f3ed918f4bfbefe32439b49dec7e"},
-    {file = "dunamai-1.15.0.tar.gz", hash = "sha256:d6088922df3226a8234c228803bb01902a83766d04c2cddb33d4dd3bf85ec9a5"},
+    {file = "dunamai-1.16.1-py3-none-any.whl", hash = "sha256:b9f169183147f6f1d3a5b3d913ffdd67247d90948006e205cbc499fe98d45554"},
+    {file = "dunamai-1.16.1.tar.gz", hash = "sha256:4f3bc2c5b0f9d83fa9c90b943100273bb087167c90a0519ac66e9e2e0d2a8210"},
 ]
 
 [package.dependencies]
@@ -1796,4 +1796,4 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "b82162184d47f7bba233f04d0872c47708bd74cfc20ab383e9aba54ab687070f"
+content-hash = "b32856524093827e11596024c9460225b8faa78b2c6708b1a9ce51d3fe2f7d45"
