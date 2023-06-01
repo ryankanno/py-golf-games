@@ -8,7 +8,7 @@ repos:
       - id: end-of-file-fixer
       - id: trailing-whitespace
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.0.0
+    rev: v1.3.0
     hooks:
       - id: mypy
   - repo: https://github.com/pycqa/flake8
@@ -19,11 +19,11 @@ repos:
           flake8-debugger, flake8-docstrings, flake8-isort, flake8-polyfill,
           flake8-pytest, flake8-quotes, yesqa]
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.3.1
+    rev: v3.4.0
     hooks:
       - id: pyupgrade
   - repo: https://github.com/python/black
-    rev: 23.1.0
+    rev: 23.3.0
     hooks:
       - id: black
         args: [--safe, --quiet, --config, 'pyproject.toml']
@@ -31,7 +31,7 @@ repos:
     rev: 1.13.0
     hooks:
       - id: blacken-docs
-        additional_dependencies: [black==22.6.0]
+        additional_dependencies: [black==23.3.0]
   - repo: https://github.com/asottile/seed-isort-config
     rev: v2.2.0
     hooks:
@@ -54,7 +54,7 @@ repos:
     hooks:
       - id: bashate
   - repo: https://github.com/alessandrojcm/commitlint-pre-commit-hook
-    rev: v9.4.0
+    rev: v9.5.0
     hooks:
       - id: commitlint
         stages: [commit-msg]
@@ -65,7 +65,7 @@ repos:
     -   id: detect-secrets
         args: ['--baseline', '.secrets.baseline']
   - repo: https://github.com/crate-ci/typos
-    rev: typos-dict-v0.9.16
+    rev: v1.14.11
     hooks:
       - id: typos
   - repo: https://github.com/jendrikseipp/vulture
