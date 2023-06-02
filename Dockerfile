@@ -11,7 +11,7 @@ ENV PIP_NO_CACHE_DIR=off \
   PIP_DEFAULT_TIMEOUT=100 \
   PATH="~/.local/bin:/venv/bin:${PATH}" \
   VIRTUAL_ENV="/venv" \
-  POETRY_VERSION=1.1.14 \
+  POETRY_VERSION=1.5.1 \
   POETRY_VIRTUALENVS_CREATE=false
 
 WORKDIR /app
