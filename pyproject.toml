@@ -43,7 +43,7 @@ pytest-xdist = "^3.3.1"
 sphinx = "^7.2.6"
 tox = "^4.11.3"
 black = "^23.9.1"
-hypothesis = "^6.87.4"
+hypothesis = "^6.88.1"
 mutmut = "^2.4.4"
 
 [tool.mypy]
