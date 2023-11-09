@@ -57,8 +57,8 @@ dist: clean ## Package py_golf_games
 install: clean ## Install package to current Python's site-package
 	poetry install
 
-lint: ## Check style with flake8
-	poetry run flake8 py_golf_games tests
+lint: ## Check style with ruff
+	poetry run ruff check py_golf_games tests
 
 release: clean ## Package and upload a release
 	ls -al

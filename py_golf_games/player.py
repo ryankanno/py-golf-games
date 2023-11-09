@@ -23,7 +23,7 @@ class Player:
     'SpongeBob'
     """
 
-    def __init__(self, name: str, gender: Gender, handicap: int = 0):
+    def __init__(self, name: str, gender: Gender, handicap: int = 0) -> None:
         super().__init__()
         self._name = name
         self._gender = gender

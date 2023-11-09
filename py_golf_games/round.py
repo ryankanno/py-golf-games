@@ -14,26 +14,26 @@ class Round:
     >>> p2 = Player("Squarepants", Gender.F, 10)
     >>> from .course import Course
     >>> course = Course("Ocean")
-    >>> round = Round(course, [p1, p2])
-    >>> course is round.course
+    >>> golf_round = Round(course, [p1, p2])
+    >>> course is golf_round.course
     True
-    >>> len(round.players)
+    >>> len(golf_round.players)
     2
     >>> p3 = Player("Joe", Gender.M, 10)
-    >>> round.add_player(p3)
-    >>> len(round.players)
+    >>> golf_round.add_player(p3)
+    >>> len(golf_round.players)
     3
     >>> from .scorecard import Scorecard
-    >>> x = round.scorecard
+    >>> x = golf_round.scorecard
     >>> type(x) is Scorecard
     True
-    >>> round.current_hole is None
+    >>> golf_round.current_hole is None
     True
-    >>> round.start()
-    >>> round.current_hole
+    >>> golf_round.start()
+    >>> golf_round.current_hole
     1
-    >>> round.advance_hole()
-    >>> round.current_hole
+    >>> golf_round.advance_hole()
+    >>> golf_round.current_hole
     2
     """
 
