@@ -35,19 +35,19 @@ def print_separator_header(max_player_name_length: int) -> None:
     print("-" * scorecard_length)
 
 
-def pretty_print(round: Round) -> None:
+def pretty_print(golf_round: Round) -> None:
     print("--------------------")
-    print(round.course)
+    print(golf_round.course)
     print("--------------------")
 
     max_len = 0
 
-    for player in round.players:
+    for player in golf_round.players:
         curr = len(player.name)
         max_len = curr if curr > max_len else max_len
 
     print_header("Hole", max_len)
-    for hole in round.course.holes:
+    for hole in golf_round.course.holes:
         print_column(hole.number, hole.number)
     print("")
 
@@ -55,14 +55,14 @@ def pretty_print(round: Round) -> None:
 
     for marker in list(TeeMarker):
         print_header(marker.name, max_len)
-        for hole in round.course.holes:
+        for hole in golf_round.course.holes:
             tee = hole.get_tee(marker)
             if tee:
                 print_column(tee.distance, hole.number)
-        print(" " + str(round.course.total_distance(marker)))
+        print(" " + str(golf_round.course.total_distance(marker)))
 
         print_header("", max_len)
-        for hole in round.course.holes:
+        for hole in golf_round.course.holes:
             tee = hole.get_tee(marker)
             if tee:
                 print_column(tee.par, hole.number)
@@ -70,13 +70,13 @@ def pretty_print(round: Round) -> None:
 
     print_separator_header(max_len)
 
-    for player in round.players:
+    for player in golf_round.players:
         print_header(player.name, max_len)
-        for hole in round.course.holes:
-            hole_score = round.scorecard.get_score(player, hole.number)
+        for hole in golf_round.course.holes:
+            hole_score = golf_round.scorecard.get_score(player, hole.number)
             if hole_score:
                 print_column(hole_score.score, hole.number)
-        player_score = round.scorecard.get_scores(player)
+        player_score = golf_round.scorecard.get_scores(player)
         if player_score:
             print(" " + str(player_score.total_score))
 
@@ -85,12 +85,13 @@ if __name__ == '__main__':
     try:
         players = PlayersGenerator.generate()
         course = CourseGenerator.generate("Makalena", 18)
-        round = RoundGenerator.generate(course, players)
+        golf_round = RoundGenerator.generate(course, players)
 
-        pretty_print(round)
+        pretty_print(golf_round)
     except:  # noqa: E722,B001
         trace = traceback.format_exc()
-        logging.error("OMGWTFBBQ: {}".format(trace))
+        logging.error("OMGWTFBBQ: %s", trace)
+
         sys.exit(1)
 
     sys.exit(0)

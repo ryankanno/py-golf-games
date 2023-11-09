@@ -12,9 +12,9 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
-import os
-import shlex
-import sys
+# import os
+# import shlex
+# import sys
 
 
 # If extensions (or modules to document with autodoc) are in another directory,
@@ -56,7 +56,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'py_golf_games'
-copyright = '2015, Ryan Kanno'
+project_copyright = '2015, Ryan Kanno'
 author = 'Ryan Kanno'
 
 # The version info for the project you're documenting, acts as replacement for

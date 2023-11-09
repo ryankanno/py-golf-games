@@ -67,14 +67,14 @@ class PlayersGenerator:
 class RoundGenerator:
     @classmethod
     def generate(cls, course: Course, players: typing.List[Player]) -> Round:
-        round = Round(course, players)
+        golf_round = Round(course, players)
 
         for player in players:
             for hole in range(1, len(course.holes) + 1):
                 strokes = random.randint(3, 10)
-                round.record_score(player, hole, strokes)
+                golf_round.record_score(player, hole, strokes)
 
-        return round
+        return golf_round
 
 
 # vim: filetype=python

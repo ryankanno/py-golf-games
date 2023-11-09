@@ -8,9 +8,9 @@ from .game import Game
 
 
 class GameEngine:
-    def __init__(self, round: Round):
+    def __init__(self, golf_round: Round) -> None:
         super().__init__()
-        self._round = round
+        self._round = golf_round
         self._games: typing.List[Game] = []
 
     def enable_game(self, player: Player, game: Game) -> None:

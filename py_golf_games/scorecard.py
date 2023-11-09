@@ -20,7 +20,7 @@ class HoleScore:
     10
     """
 
-    def __init__(self, hole_number: int, score: int):
+    def __init__(self, hole_number: int, score: int) -> None:
         super().__init__()
         self.hole_number = hole_number
         self.score = score
@@ -58,7 +58,7 @@ class PlayerScores:
     5
     """
 
-    def __init__(self, player: Player):
+    def __init__(self, player: Player) -> None:
         super().__init__()
         self._player = player
         self._hole_scores: typing.Dict[int, HoleScore] = {}
