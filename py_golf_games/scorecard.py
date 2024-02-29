@@ -67,11 +67,7 @@ class PlayerScores:
         self._hole_scores[hole_number] = HoleScore(hole_number, score)
 
     def get_score(self, hole_number: int) -> typing.Optional[HoleScore]:
-        return (
-            self._hole_scores[hole_number]
-            if hole_number in self._hole_scores
-            else None
-        )
+        return self._hole_scores.get(hole_number, None)
 
     @property
     def total_score(self) -> int:
@@ -112,11 +108,7 @@ class Scorecard:
         self._player_scores[player].record_score(hole_number, score)
 
     def get_scores(self, player: Player) -> typing.Optional[PlayerScores]:
-        return (
-            self._player_scores[player]
-            if player in self._player_scores
-            else None
-        )
+        return self._player_scores.get(player, None)
 
     def get_score(
         self, player: Player, hole_number: int

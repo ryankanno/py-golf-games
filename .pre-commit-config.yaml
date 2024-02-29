@@ -8,20 +8,20 @@ repos:
       - id: end-of-file-fixer
       - id: trailing-whitespace
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.6.0
+    rev: v1.8.0
     hooks:
       - id: mypy
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.1.3
+    rev: v0.3.0
     hooks:
     - id: ruff
       args: ['--config', 'pyproject.toml']
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.15.0
+    rev: v3.15.1
     hooks:
       - id: pyupgrade
   - repo: https://github.com/python/black
-    rev: 23.9.1
+    rev: 24.2.0
     hooks:
       - id: black
         args: [--safe, --quiet, --config, 'pyproject.toml']
@@ -29,7 +29,7 @@ repos:
     rev: 1.16.0
     hooks:
       - id: blacken-docs
-        additional_dependencies: [black==23.9.1]
+        additional_dependencies: [black==24.2.0]
   - repo: https://github.com/asottile/seed-isort-config
     rev: v2.2.0
     hooks:
@@ -52,7 +52,7 @@ repos:
     hooks:
       - id: bashate
   - repo: https://github.com/alessandrojcm/commitlint-pre-commit-hook
-    rev: v9.5.0
+    rev: v9.12.0
     hooks:
       - id: commitlint
         stages: [commit-msg]
@@ -63,10 +63,10 @@ repos:
     -   id: detect-secrets
         args: ['--baseline', '.secrets.baseline']
   - repo: https://github.com/crate-ci/typos
-    rev: v1.16.19
+    rev: typos-v0.10.21
     hooks:
       - id: typos
   - repo: https://github.com/jendrikseipp/vulture
-    rev: 'v2.10'
+    rev: 'v2.11'
     hooks:
       - id: vulture

@@ -40,7 +40,7 @@ class Course:
         self._holes[hole_number] = hole
 
     def get_hole(self, hole_number: int) -> typing.Optional[Hole]:
-        return self._holes[hole_number] if hole_number in self._holes else None
+        return self._holes.get(hole_number, None)
 
     @property
     def holes(self) -> typing.ValuesView[Hole]:
