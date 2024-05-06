@@ -26,7 +26,7 @@ python = ">=3.11,<4"
 structlog = "^24.1.0"
 
 [tool.poetry.dev-dependencies]
-dunamai = "^1.21.0"
+dunamai = "^1.21.1"
 ipython = "^8.24.0"
 isort = "^5.13.2"
 konch = "^4.5.0"
@@ -41,9 +41,9 @@ pytest-xdist = "^3.6.1"
 sphinx = "^7.3.7"
 tox = "^4.15.0"
 black = "^24.4.2"
-hypothesis = "^6.100.2"
+hypothesis = "^6.100.4"
 mutmut = "^2.4.5"
-ruff = "^0.4.2"
+ruff = "^0.4.3"
 
 [tool.mypy]
 python_version = "3.11"
