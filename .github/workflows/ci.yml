@@ -68,18 +68,20 @@ jobs:
         with:
           path: .tox
           key: ${{ matrix.os }}-${{ matrix.python-version }}-tox-${{ hashFiles('pyproject.toml', '.pre-commit-config.yaml') }}
+      - name: Set tox env (for tox + codecov)
+        run: |
+          MATRIX_PYTHON_VERSION=${{matrix.python-version}}
+          echo "TOXENV=py${MATRIX_PYTHON_VERSION/./}" >> $GITHUB_ENV
       - name: Run tox
         run: |
           tox -p
-      - name: Set code coverage variable for coverage file / flags
-        run: |
-          MATRIX_PYTHON_VERSION=${{matrix.python-version}}
-          echo "TOX_COVERAGE_ENV=py${MATRIX_PYTHON_VERSION/./}" >> $GITHUB_ENV
+        env:
+          TOXENV: ${{ env.TOXENV }}
       - name: Upload to Codecov
         uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: ./.tox/.coverage.${{ env.TOX_COVERAGE_ENV }}.xml
+          file: ./.tox/.coverage.${{ env.TOXENV }}.xml
           verbose: true
           fail_ci_if_error: true
-          flags: "${{ env.TOX_COVERAGE_ENV }}"
+          flags: "${{ env.TOXENV }}"
