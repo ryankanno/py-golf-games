@@ -23,11 +23,12 @@ mypy.ini
 .pylintrc
 pylintrc
 pytest.ini
+.commitlint.config.js
 .pre-commit-config.yaml
 .konchrc
 .mypy_cache
 .pytest_cache
-commitlint.config.ts
+.ruff_cache
 Dockerfile*
 docker-compose*
 .dockerignore
