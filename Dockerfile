@@ -5,7 +5,7 @@ ENV PYTHONFAULTHANDLER=1 \
     PYTHONUNBUFFERED=1 \
     PYTHONHASHSEED=random
 
-FROM base AS builder
+FROM base AS uv
 
 ENV UV_LINK_MODE=copy \
     UV_COMPILE_BYTECODE=1 \
@@ -25,6 +25,8 @@ RUN apt-get update -qy \
 
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
 
+FROM uv AS deps-builder
+
 COPY pyproject.toml /_project/
 COPY uv.lock /_project/
 
@@ -38,9 +40,13 @@ RUN --mount=type=cache,target=/root/.cache <<EOT
     uv sync --locked --no-dev --no-install-project
 EOT
 
+FROM uv AS project-builder
+
+COPY --from=deps-builder /app /app
+
 COPY . /src
 
-# install application
+# install project
 RUN --mount=type=cache,target=/root/.cache <<EOT
     cd /src
     uv sync --locked --no-dev --no-editable
@@ -71,7 +77,7 @@ EOT
 
 COPY docker-entrypoint.sh /
 
-COPY --from=builder --chown=app:app /app /app
+COPY --from=project-builder --chown=app:app /app /app
 
 USER app
 WORKDIR /app
