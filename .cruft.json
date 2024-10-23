@@ -1,0 +1,30 @@
+{
+  "template": "https://github.com/ryankanno/cookiecutter-py",
+  "commit": "8d5f6e33be89102641c5434181a4a1b1d0105eb0",
+  "checkout": "8d5f6e33be89102641c5434181a4a1b1d0105eb0",
+  "context": {
+    "cookiecutter": {
+      "author_name": "Ryan Kanno",
+      "author_email": "ryankanno@localkinegrinds.com",
+      "project_name": "py-golf-games",
+      "project_short_description": "Simulation of golf games",
+      "project_url": "https://github.com/ryankanno/py-golf-games",
+      "project_license": "MIT",
+      "github_repository_owner": "ryankanno",
+      "package_name": "py_golf_games",
+      "version": "0.0.0",
+      "python_version": "3.11",
+      "supported_python_versions": "3.10,3.11",
+      "poetry_version": "1.5.1",
+      "tox_version": "4.5.2",
+      "should_create_author_files": "y",
+      "should_install_github_dependabot": "y",
+      "should_automerge_autoapprove_github_dependabot": "y",
+      "should_install_github_actions": "y",
+      "should_upload_coverage_to_codecov": "y",
+      "should_publish_to_pypi": "y",
+      "_template": "https://github.com/ryankanno/cookiecutter-py"
+    }
+  },
+  "directory": null
+}
