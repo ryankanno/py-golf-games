@@ -36,7 +36,7 @@ EOT
 
 # install deps
 RUN --mount=type=cache,target=/root/.cache <<EOT
-    cd /_project
+    cd /_project || exit
     uv sync --locked --no-dev --no-install-project
 EOT
 
@@ -48,7 +48,7 @@ COPY . /src
 
 # install project
 RUN --mount=type=cache,target=/root/.cache <<EOT
-    cd /src
+    cd /src || exit
     uv sync --locked --no-dev --no-editable
 EOT
 
