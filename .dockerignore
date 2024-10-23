@@ -36,6 +36,7 @@ docker-compose*
 Makefile
 Justfile
 tox.ini
+.tox
 
 # python
 *__pycache__
