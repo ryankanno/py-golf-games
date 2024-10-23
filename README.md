@@ -15,7 +15,7 @@
 <div align="center">
 
   [![ci][ci-badge-url]][project-url]
-  [![codecov][codecov-badge-url]]][codecov-project-url]]
+  [![codecov][codecov-badge-url]][codecov-project-url]
 
 </div>
 
