@@ -34,9 +34,10 @@ RUN --mount=type=cache,target=/root/.cache <<EOT
     uv venv
 EOT
 
+WORKDIR /_project
+
 # install deps
 RUN --mount=type=cache,target=/root/.cache <<EOT
-    cd /_project || exit
     uv sync --locked --no-dev --no-install-project
 EOT
 
@@ -46,9 +47,10 @@ COPY --from=deps-builder /app /app
 
 COPY . /src
 
+WORKDIR /src
+
 # install project
 RUN --mount=type=cache,target=/root/.cache <<EOT
-    cd /src || exit
     uv sync --locked --no-dev --no-editable
 EOT
 
