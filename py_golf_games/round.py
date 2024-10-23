@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-import typing
 
 from .course import Course
 from .player import Player
@@ -37,19 +36,19 @@ class Round:
     2
     """
 
-    def __init__(self, course: Course, players: typing.List[Player]) -> None:
+    def __init__(self, course: Course, players: list[Player]) -> None:
         super().__init__()
         self._course = course
         self._players = players
         self._scorecard = Scorecard()
-        self._current_hole: typing.Optional[int] = None
+        self._current_hole: int | None = None
 
     @property
     def course(self) -> Course:
         return self._course
 
     @property
-    def players(self) -> typing.List[Player]:
+    def players(self) -> list[Player]:
         return self._players
 
     @property
@@ -57,11 +56,11 @@ class Round:
         return self._scorecard
 
     @property
-    def current_hole(self) -> typing.Optional[int]:
+    def current_hole(self) -> int | None:
         return self._current_hole
 
     @current_hole.setter
-    def current_hole(self, value: typing.Optional[int]) -> None:
+    def current_hole(self, value: int | None) -> None:
         self._current_hole = value
 
     def add_player(self, player: Player) -> None:

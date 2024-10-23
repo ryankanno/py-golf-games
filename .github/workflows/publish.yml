@@ -11,7 +11,7 @@ on:
 
 env:
   PYTHON_VERSION: 3.11
-  POETRY_VERSION: 1.5.1
+  UV_VERSION: 0.4.25
 
 jobs:
   build:
@@ -30,8 +30,11 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
-      - name: Install Poetry ${{ env.POETRY_VERSION }}
-        run: python -m pip install poetry==${{ env.POETRY_VERSION }}
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          version: ${{ env.UV_VERSION }}
+          enable-cache: true
 
       - name: Set version with dunamai
         uses: mtkennerly/dunamai-action@v1
@@ -40,15 +43,15 @@ jobs:
           command: dunamai from git
           args: --no-metadata --style semver
 
-      - run: echo ${{ steps.version.outputs.version }}
-      - run: poetry version ${{ steps.version.outputs.version }}
+      - name: set version from dunamai
+      - run: sed -i -e "s/0.0.0/${{ steps.version.outputs.version }}/" pyproject.toml
 
-      - name: poetry build
-        run: poetry build
+      - name: uv build
+        run: uv build
 
       - uses: actions/upload-artifact@v4
         with:
-          name: poetry_build
+          name: uv_build
           path: dist/
 
   publish_test_pypi:
@@ -64,24 +67,23 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          version: ${{ env.UV_VERSION }}
+          enable-cache: true
+
       - uses: actions/download-artifact@v4
         with:
-          name: poetry_build
+          name: uv_build
           path: dist/
 
-      - name: Install Poetry ${{ env.POETRY_VERSION }}
-        run: python -m pip install poetry==${{ env.POETRY_VERSION }}
-
-      - run: poetry version ${{ needs.build.outputs.version }}
-
-      - name: poetry configure TestPyPI Repo
-        run: poetry config repositories.test-pypi https://test.pypi.org/legacy/
-
-      - name: poetry configure TestPyPI Token
-        run:  poetry config pypi-token.test-pypi ${{ secrets.TEST_PYPI_API_TOKEN }}
-
-      - name: poetry publish TestPyPi
-        run: poetry publish -r test-pypi
+      - name: uv publish TestPyPi
+        env:
+          UV_PUBLISH_URL: https://test.pypi.org/legacy/
+          UV_PUBLISH_TOKEN: ${{ secrets.TEST_PYPI_API_TOKEN }}
+        run: |
+          uv publish
 
   publish_pypi:
     if: github.repository_owner == 'ryankanno' && github.event_name == 'release' && github.event.action == 'published'
@@ -96,18 +98,19 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          version: ${{ env.UV_VERSION }}
+          enable-cache: true
+
       - uses: actions/download-artifact@v4
         with:
-          name: poetry_build
+          name: uv_build
           path: dist/
 
-      - name: Install Poetry ${{ env.POETRY_VERSION }}
-        run: python -m pip install poetry==${{ env.POETRY_VERSION }}
-
-      - run: poetry version ${{ needs.build.outputs.version }}
-
-      - name: poetry configure PyPI Token
-        run: poetry config pypi-token.pypi ${{ secrets.PYPI_API_TOKEN }}
-
-      - name: poetry publish PyPi
-        run: poetry publish
+      - name: uv publish PyPi
+        env:
+          UV_PUBLISH_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
+        run: |
+          uv publish

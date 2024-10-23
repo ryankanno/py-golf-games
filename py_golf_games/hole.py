@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-import typing
 
 from .tee import Tee
 from .tee import TeeMarker
@@ -19,7 +18,7 @@ class Hole:
     'Hole 1'
     """
 
-    def __init__(self, number: int, tees: typing.Dict[TeeMarker, Tee]) -> None:
+    def __init__(self, number: int, tees: dict[TeeMarker, Tee]) -> None:
         super().__init__()
         self._number = number
         self._tees = tees or {}
@@ -29,10 +28,10 @@ class Hole:
         return self._number
 
     @property
-    def tees(self) -> typing.Dict[TeeMarker, Tee]:
+    def tees(self) -> dict[TeeMarker, Tee]:
         return self._tees
 
-    def get_tee(self, marker: TeeMarker) -> typing.Optional[Tee]:
+    def get_tee(self, marker: TeeMarker) -> Tee | None:
         return self._tees.get(marker)
 
     def __str__(self) -> str:

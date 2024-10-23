@@ -9,7 +9,7 @@ from ..player import Player
 class Game:
     __metaclass__ = abc.ABCMeta
 
-    def __init__(self, name: str, players: typing.List[Player]) -> None:
+    def __init__(self, name: str, players: list[Player]) -> None:
         super().__init__()
         self._name = name
         self._players = {}

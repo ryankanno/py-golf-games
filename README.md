@@ -53,9 +53,9 @@ This is a tiny library in a much larger one.
 
 ### Prerequisites
 
-* [poetry](https://python-poetry.org/docs/#installing-with-the-official-installer)
+* [uv](https://docs.astral.sh/uv/getting-started/installation/)
 ```sh
-curl -sSL https://install.python-poetry.org | python3 -
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
 ### Installation
@@ -66,7 +66,7 @@ git clone https://github.com/ryankanno/py-golf-games.git
 ```
 2. Install
 ```sh
-poetry install
+uv sync --locked
 ```
 
 <!-- USAGE EXAMPLES -->
