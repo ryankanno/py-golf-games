@@ -18,6 +18,8 @@ logging.basicConfig(
 
 COLUMN_WIDTH = 5
 
+NUM_HALF_HOLES = 9
+
 
 def print_header(header: str, max_len: int) -> None:
     print(
@@ -26,7 +28,7 @@ def print_header(header: str, max_len: int) -> None:
 
 
 def print_column(value: int, hole_number: int) -> None:
-    width = COLUMN_WIDTH + 1 if hole_number > 9 else COLUMN_WIDTH
+    width = COLUMN_WIDTH + 1 if hole_number > NUM_HALF_HOLES else COLUMN_WIDTH
     sys.stdout.write(str(value).center(width, " ") + "|")
 
 
@@ -44,12 +46,12 @@ def pretty_print(golf_round: Round) -> None:
 
     for player in golf_round.players:
         curr = len(player.name)
-        max_len = curr if curr > max_len else max_len
+        max_len = max(max_len, curr)
 
     print_header("Hole", max_len)
     for hole in golf_round.course.holes:
         print_column(hole.number, hole.number)
-    print("")
+    print()
 
     print_separator_header(max_len)
 
@@ -66,7 +68,7 @@ def pretty_print(golf_round: Round) -> None:
             tee = hole.get_tee(marker)
             if tee:
                 print_column(tee.par, hole.number)
-        print("")
+        print()
 
     print_separator_header(max_len)
 
@@ -90,7 +92,7 @@ if __name__ == '__main__':
         pretty_print(golf_round)
     except:  # noqa: E722,B001
         trace = traceback.format_exc()
-        logging.error("OMGWTFBBQ: %s", trace)
+        logging.exception("OMGWTFBBQ: %s", trace)
 
         sys.exit(1)
 

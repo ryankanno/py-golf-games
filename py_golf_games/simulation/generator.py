@@ -58,10 +58,10 @@ class PlayersGenerator:
 
     @classmethod
     def generate(cls, max_players: int = 4) -> typing.List[Player]:
-        players = []
-        for _ in range(random.randint(1, max_players)):
-            players.append(Player(cls._random_name(), cls._random_gender()))
-        return players
+        return [
+            Player(cls._random_name(), cls._random_gender())
+            for _ in range(random.randint(1, max_players))
+        ]
 
 
 class RoundGenerator:
