@@ -13,7 +13,7 @@ class GameEngine:
         self._round = golf_round
         self._games: typing.List[Game] = []
 
-    def enable_game(self, player: Player, game: Game) -> None:
+    def enable_game(self, _player: Player, game: Game) -> None:
         self._games.append(game)
 
 

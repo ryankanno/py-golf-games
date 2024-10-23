@@ -39,7 +39,6 @@ class Tee:
         self._par = par
         self._distance = distance
         self._handicap = handicap
-        assert self._marker in list(TeeMarker)
 
     @property
     def par(self) -> int:

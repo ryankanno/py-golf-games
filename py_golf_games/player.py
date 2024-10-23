@@ -28,7 +28,6 @@ class Player:
         self._name = name
         self._gender = gender
         self._handicap = handicap
-        assert self._gender in list(Gender)
 
     @property
     def name(self) -> str:

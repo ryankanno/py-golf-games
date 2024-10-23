@@ -1,7 +1,7 @@
 {
   "template": "https://github.com/ryankanno/cookiecutter-py",
-  "commit": "8d5f6e33be89102641c5434181a4a1b1d0105eb0",
-  "checkout": "8d5f6e33be89102641c5434181a4a1b1d0105eb0",
+  "commit": "5cf0a8a3ff8a8de106d001d57bd71028264b63f3",
+  "checkout": null,
   "context": {
     "cookiecutter": {
       "author_name": "Ryan Kanno",
@@ -17,6 +17,9 @@
       "supported_python_versions": "3.10,3.11",
       "poetry_version": "1.5.1",
       "tox_version": "4.5.2",
+      "direnv_pyenv_python_version": "3.11.0",
+      "sphinx_theme": "furo",
+      "should_use_direnv": "y",
       "should_create_author_files": "y",
       "should_install_github_dependabot": "y",
       "should_automerge_autoapprove_github_dependabot": "y",

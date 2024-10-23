@@ -1,18 +1,18 @@
-FROM python:3.11-slim-buster as base
+FROM python:3.11-slim-buster AS base
 
 ENV PYTHONFAULTHANDLER=1 \
-  PYTHONUNBUFFERED=1 \
-  PYTHONHASHSEED=random
+    PYTHONUNBUFFERED=1 \
+    PYTHONHASHSEED=random
 
 FROM base as builder
 
 ENV PIP_NO_CACHE_DIR=off \
-  PIP_DISABLE_PIP_VERSION_CHECK=on \
-  PIP_DEFAULT_TIMEOUT=100 \
-  PATH="~/.local/bin:/venv/bin:${PATH}" \
-  VIRTUAL_ENV="/venv" \
-  POETRY_VERSION=1.5.1 \
-  POETRY_VIRTUALENVS_CREATE=false
+    PIP_DISABLE_PIP_VERSION_CHECK=on \
+    PIP_DEFAULT_TIMEOUT=100 \
+    PATH="~/.local/bin:/venv/bin:${PATH}" \
+    VIRTUAL_ENV="/venv" \
+    POETRY_VERSION=1.5.1 \
+    POETRY_VIRTUALENVS_CREATE=false
 
 WORKDIR /app
 
@@ -31,7 +31,7 @@ RUN poetry install --no-dev --no-interaction --no-ansi --no-root
 COPY . ./
 RUN poetry install --no-interaction --no-ansi
 
-FROM base as final
+FROM base AS final
 
 ARG REPOSITORY=https://github.com/ryankanno/py-golf-games
 ARG BUILD_DATETIME
@@ -39,15 +39,15 @@ ARG VERSION
 ARG REVISION
 ARG BRANCH
 
-ENV REPOSITORY ${REPOSITORY}
-ENV BUILD_DATETIME ${BUILD_DATETIME:-null}
-ENV VERSION ${VERSION:-null}
-ENV REVISION ${REVISION:-null}
-ENV BRANCH ${BRANCH:-main}
+ENV REPOSITORY=${REPOSITORY}
+ENV BUILD_DATETIME=${BUILD_DATETIME:-null}
+ENV VERSION=${VERSION:-null}
+ENV REVISION=${REVISION:-null}
+ENV BRANCH=${BRANCH:-main}
 
 ENV PATH="/venv/bin:${PATH}" \
-  VIRTUAL_ENV="/venv" \
-  PYTHONPATH="/app"
+    VIRTUAL_ENV="/venv" \
+    PYTHONPATH="/app"
 
 LABEL maintainers="Ryan Kanno <ryankanno@localkinegrinds.com>"
 
