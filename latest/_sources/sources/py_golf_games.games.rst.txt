@@ -1,0 +1,45 @@
+py\_golf\_games.games package
+=============================
+
+Submodules
+----------
+
+py\_golf\_games.games.game module
+---------------------------------
+
+.. automodule:: py_golf_games.games.game
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+py\_golf\_games.games.game\_engine module
+-----------------------------------------
+
+.. automodule:: py_golf_games.games.game_engine
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+py\_golf\_games.games.sandie module
+-----------------------------------
+
+.. automodule:: py_golf_games.games.sandie
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+py\_golf\_games.games.stroke module
+-----------------------------------
+
+.. automodule:: py_golf_games.games.stroke
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: py_golf_games.games
+   :members:
+   :undoc-members:
+   :show-inheritance:

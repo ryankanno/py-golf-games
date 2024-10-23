@@ -1,0 +1,29 @@
+py\_golf\_games.simulation package
+==================================
+
+Submodules
+----------
+
+py\_golf\_games.simulation.generator module
+-------------------------------------------
+
+.. automodule:: py_golf_games.simulation.generator
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+py\_golf\_games.simulation.simulator module
+-------------------------------------------
+
+.. automodule:: py_golf_games.simulation.simulator
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: py_golf_games.simulation
+   :members:
+   :undoc-members:
+   :show-inheritance:

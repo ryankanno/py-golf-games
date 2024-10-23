@@ -1,0 +1,70 @@
+py\_golf\_games package
+=======================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   py_golf_games.games
+   py_golf_games.simulation
+
+Submodules
+----------
+
+py\_golf\_games.course module
+-----------------------------
+
+.. automodule:: py_golf_games.course
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+py\_golf\_games.hole module
+---------------------------
+
+.. automodule:: py_golf_games.hole
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+py\_golf\_games.player module
+-----------------------------
+
+.. automodule:: py_golf_games.player
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+py\_golf\_games.round module
+----------------------------
+
+.. automodule:: py_golf_games.round
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+py\_golf\_games.scorecard module
+--------------------------------
+
+.. automodule:: py_golf_games.scorecard
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+py\_golf\_games.tee module
+--------------------------
+
+.. automodule:: py_golf_games.tee
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: py_golf_games
+   :members:
+   :undoc-members:
+   :show-inheritance:

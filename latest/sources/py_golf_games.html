@@ -1,0 +1,878 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" />
+
+    <!-- Generated with Sphinx 7.4.7 and Furo 2024.08.06 -->
+        <title>py_golf_games package - py_golf_games documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">py_golf_games  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">py_golf_games  documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html"> Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/usage.html"> Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roadmap/roadmap.html"> Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../todo/todo.html"> TODO</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/sources/py_golf_games.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="py-golf-games-package">
+<h1>py_golf_games package<a class="headerlink" href="#py-golf-games-package" title="Link to this heading">¶</a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="py_golf_games.games.html">py_golf_games.games package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="py_golf_games.games.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="py_golf_games.games.html#module-py_golf_games.games.game">py_golf_games.games.game module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="py_golf_games.games.html#py_golf_games.games.game.Game"><code class="docutils literal notranslate"><span class="pre">Game</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="py_golf_games.games.html#py_golf_games.games.game.Game.at_turn"><code class="docutils literal notranslate"><span class="pre">Game.at_turn()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="py_golf_games.games.html#py_golf_games.games.game.Game.is_participating"><code class="docutils literal notranslate"><span class="pre">Game.is_participating()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="py_golf_games.games.html#py_golf_games.games.game.Game.name"><code class="docutils literal notranslate"><span class="pre">Game.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="py_golf_games.games.html#py_golf_games.games.game.Game.players"><code class="docutils literal notranslate"><span class="pre">Game.players</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="py_golf_games.games.html#py_golf_games.games.game.Game.post_hole"><code class="docutils literal notranslate"><span class="pre">Game.post_hole()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="py_golf_games.games.html#py_golf_games.games.game.Game.post_round"><code class="docutils literal notranslate"><span class="pre">Game.post_round()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="py_golf_games.games.html#py_golf_games.games.game.Game.pre_hole"><code class="docutils literal notranslate"><span class="pre">Game.pre_hole()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="py_golf_games.games.html#py_golf_games.games.game.Game.pre_round"><code class="docutils literal notranslate"><span class="pre">Game.pre_round()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="py_golf_games.games.html#module-py_golf_games.games.game_engine">py_golf_games.games.game_engine module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="py_golf_games.games.html#py_golf_games.games.game_engine.GameEngine"><code class="docutils literal notranslate"><span class="pre">GameEngine</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="py_golf_games.games.html#py_golf_games.games.game_engine.GameEngine.enable_game"><code class="docutils literal notranslate"><span class="pre">GameEngine.enable_game()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="py_golf_games.games.html#module-py_golf_games.games.sandie">py_golf_games.games.sandie module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="py_golf_games.games.html#py_golf_games.games.sandie.Sandie"><code class="docutils literal notranslate"><span class="pre">Sandie</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="py_golf_games.games.html#module-py_golf_games.games.stroke">py_golf_games.games.stroke module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="py_golf_games.games.html#py_golf_games.games.stroke.Stroke"><code class="docutils literal notranslate"><span class="pre">Stroke</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="py_golf_games.games.html#module-py_golf_games.games">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="py_golf_games.simulation.html">py_golf_games.simulation package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="py_golf_games.simulation.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="py_golf_games.simulation.html#module-py_golf_games.simulation.generator">py_golf_games.simulation.generator module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="py_golf_games.simulation.html#py_golf_games.simulation.generator.CourseGenerator"><code class="docutils literal notranslate"><span class="pre">CourseGenerator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="py_golf_games.simulation.html#py_golf_games.simulation.generator.CourseGenerator.generate"><code class="docutils literal notranslate"><span class="pre">CourseGenerator.generate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="py_golf_games.simulation.html#py_golf_games.simulation.generator.HoleGenerator"><code class="docutils literal notranslate"><span class="pre">HoleGenerator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="py_golf_games.simulation.html#py_golf_games.simulation.generator.HoleGenerator.generate"><code class="docutils literal notranslate"><span class="pre">HoleGenerator.generate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="py_golf_games.simulation.html#py_golf_games.simulation.generator.PlayersGenerator"><code class="docutils literal notranslate"><span class="pre">PlayersGenerator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="py_golf_games.simulation.html#py_golf_games.simulation.generator.PlayersGenerator.generate"><code class="docutils literal notranslate"><span class="pre">PlayersGenerator.generate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="py_golf_games.simulation.html#py_golf_games.simulation.generator.RoundGenerator"><code class="docutils literal notranslate"><span class="pre">RoundGenerator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="py_golf_games.simulation.html#py_golf_games.simulation.generator.RoundGenerator.generate"><code class="docutils literal notranslate"><span class="pre">RoundGenerator.generate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="py_golf_games.simulation.html#py_golf_games.simulation.generator.TeeGenerator"><code class="docutils literal notranslate"><span class="pre">TeeGenerator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="py_golf_games.simulation.html#py_golf_games.simulation.generator.TeeGenerator.generate"><code class="docutils literal notranslate"><span class="pre">TeeGenerator.generate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="py_golf_games.simulation.html#py_golf_games.simulation.generator.TeesGenerator"><code class="docutils literal notranslate"><span class="pre">TeesGenerator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="py_golf_games.simulation.html#py_golf_games.simulation.generator.TeesGenerator.generate"><code class="docutils literal notranslate"><span class="pre">TeesGenerator.generate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="py_golf_games.simulation.html#module-py_golf_games.simulation.simulator">py_golf_games.simulation.simulator module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="py_golf_games.simulation.html#py_golf_games.simulation.simulator.pretty_print"><code class="docutils literal notranslate"><span class="pre">pretty_print()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py_golf_games.simulation.html#py_golf_games.simulation.simulator.print_column"><code class="docutils literal notranslate"><span class="pre">print_column()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py_golf_games.simulation.html#py_golf_games.simulation.simulator.print_header"><code class="docutils literal notranslate"><span class="pre">print_header()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="py_golf_games.simulation.html#py_golf_games.simulation.simulator.print_separator_header"><code class="docutils literal notranslate"><span class="pre">print_separator_header()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="py_golf_games.simulation.html#module-py_golf_games.simulation">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+</section>
+<section id="module-py_golf_games.course">
+<span id="py-golf-games-course-module"></span><h2>py_golf_games.course module<a class="headerlink" href="#module-py_golf_games.course" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="py_golf_games.course.Course">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py_golf_games.course.</span></span><span class="sig-name descname"><span class="pre">Course</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/py_golf_games/course.html#Course"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_golf_games.course.Course" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">.hole</span> <span class="kn">import</span> <span class="n">Hole</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">.tee</span> <span class="kn">import</span> <span class="n">TeeMarker</span><span class="p">,</span> <span class="n">Tee</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">Course</span><span class="p">(</span><span class="s2">&quot;Hawaii Kai&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;Hawaii Kai&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t1</span> <span class="o">=</span> <span class="n">Tee</span><span class="p">(</span><span class="n">TeeMarker</span><span class="o">.</span><span class="n">Gold</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t2</span> <span class="o">=</span> <span class="n">Tee</span><span class="p">(</span><span class="n">TeeMarker</span><span class="o">.</span><span class="n">Gold</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h1</span> <span class="o">=</span> <span class="n">Hole</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">{</span><span class="n">TeeMarker</span><span class="o">.</span><span class="n">Gold</span><span class="p">:</span> <span class="n">t1</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h2</span> <span class="o">=</span> <span class="n">Hole</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">{</span><span class="n">TeeMarker</span><span class="o">.</span><span class="n">Gold</span><span class="p">:</span> <span class="n">t2</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">add_hole</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">h1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">add_hole</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">h2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">total_distance</span><span class="p">(</span><span class="n">TeeMarker</span><span class="o">.</span><span class="n">Gold</span><span class="p">)</span>
+<span class="go">900</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">total_par</span><span class="p">(</span><span class="n">TeeMarker</span><span class="o">.</span><span class="n">Gold</span><span class="p">)</span>
+<span class="go">8</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">holes</span><span class="p">)</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="go">&#39;Hawaii Kai&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h1</span> <span class="ow">is</span> <span class="n">c</span><span class="o">.</span><span class="n">get_hole</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="py_golf_games.course.Course.add_hole">
+<span class="sig-name descname"><span class="pre">add_hole</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hole_number</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hole</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#py_golf_games.hole.Hole" title="py_golf_games.hole.Hole"><span class="pre">Hole</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/py_golf_games/course.html#Course.add_hole"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_golf_games.course.Course.add_hole" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_golf_games.course.Course.get_hole">
+<span class="sig-name descname"><span class="pre">get_hole</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hole_number</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#py_golf_games.hole.Hole" title="py_golf_games.hole.Hole"><span class="pre">Hole</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/py_golf_games/course.html#Course.get_hole"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_golf_games.course.Course.get_hole" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="py_golf_games.course.Course.holes">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">holes</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ValuesView</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#py_golf_games.hole.Hole" title="py_golf_games.hole.Hole"><span class="pre">Hole</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#py_golf_games.course.Course.holes" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="py_golf_games.course.Course.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#py_golf_games.course.Course.name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_golf_games.course.Course.total_distance">
+<span class="sig-name descname"><span class="pre">total_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tee_marker</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#py_golf_games.tee.TeeMarker" title="py_golf_games.tee.TeeMarker"><span class="pre">TeeMarker</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/py_golf_games/course.html#Course.total_distance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_golf_games.course.Course.total_distance" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_golf_games.course.Course.total_par">
+<span class="sig-name descname"><span class="pre">total_par</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tee_marker</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#py_golf_games.tee.TeeMarker" title="py_golf_games.tee.TeeMarker"><span class="pre">TeeMarker</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/py_golf_games/course.html#Course.total_par"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_golf_games.course.Course.total_par" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-py_golf_games.hole">
+<span id="py-golf-games-hole-module"></span><h2>py_golf_games.hole module<a class="headerlink" href="#module-py_golf_games.hole" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="py_golf_games.hole.Hole">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py_golf_games.hole.</span></span><span class="sig-name descname"><span class="pre">Hole</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tees</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#py_golf_games.tee.TeeMarker" title="py_golf_games.tee.TeeMarker"><span class="pre">TeeMarker</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#py_golf_games.tee.Tee" title="py_golf_games.tee.Tee"><span class="pre">Tee</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/py_golf_games/hole.html#Hole"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_golf_games.hole.Hole" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">h</span> <span class="o">=</span> <span class="n">Hole</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">{})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span><span class="o">.</span><span class="n">number</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span><span class="o">.</span><span class="n">tees</span>
+<span class="go">{}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span><span class="o">.</span><span class="n">get_tee</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+<span class="go">&#39;Hole 1&#39;</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="py_golf_games.hole.Hole.get_tee">
+<span class="sig-name descname"><span class="pre">get_tee</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">marker</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#py_golf_games.tee.TeeMarker" title="py_golf_games.tee.TeeMarker"><span class="pre">TeeMarker</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#py_golf_games.tee.Tee" title="py_golf_games.tee.Tee"><span class="pre">Tee</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/py_golf_games/hole.html#Hole.get_tee"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_golf_games.hole.Hole.get_tee" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="py_golf_games.hole.Hole.number">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">number</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#py_golf_games.hole.Hole.number" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="py_golf_games.hole.Hole.tees">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">tees</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#py_golf_games.tee.TeeMarker" title="py_golf_games.tee.TeeMarker"><span class="pre">TeeMarker</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#py_golf_games.tee.Tee" title="py_golf_games.tee.Tee"><span class="pre">Tee</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#py_golf_games.hole.Hole.tees" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-py_golf_games.player">
+<span id="py-golf-games-player-module"></span><h2>py_golf_games.player module<a class="headerlink" href="#module-py_golf_games.player" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="py_golf_games.player.Gender">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py_golf_games.player.</span></span><span class="sig-name descname"><span class="pre">Gender</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/py_golf_games/player.html#Gender"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_golf_games.player.Gender" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="py_golf_games.player.Gender.F">
+<span class="sig-name descname"><span class="pre">F</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#py_golf_games.player.Gender.F" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="py_golf_games.player.Gender.M">
+<span class="sig-name descname"><span class="pre">M</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#py_golf_games.player.Gender.M" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="py_golf_games.player.Player">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py_golf_games.player.</span></span><span class="sig-name descname"><span class="pre">Player</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gender</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#py_golf_games.player.Gender" title="py_golf_games.player.Gender"><span class="pre">Gender</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">handicap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/py_golf_games/player.html#Player"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_golf_games.player.Player" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Player</span><span class="p">(</span><span class="s2">&quot;SpongeBob&quot;</span><span class="p">,</span> <span class="n">Gender</span><span class="o">.</span><span class="n">M</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;SpongeBob&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">gender</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;M&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">handicap</span>
+<span class="go">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="go">&#39;SpongeBob&#39;</span>
+</pre></div>
+</div>
+<dl class="py property">
+<dt class="sig sig-object py" id="py_golf_games.player.Player.gender">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">gender</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#py_golf_games.player.Gender" title="py_golf_games.player.Gender"><span class="pre">Gender</span></a></em><a class="headerlink" href="#py_golf_games.player.Player.gender" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="py_golf_games.player.Player.handicap">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">handicap</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#py_golf_games.player.Player.handicap" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="py_golf_games.player.Player.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#py_golf_games.player.Player.name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-py_golf_games.round">
+<span id="py-golf-games-round-module"></span><h2>py_golf_games.round module<a class="headerlink" href="#module-py_golf_games.round" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="py_golf_games.round.Round">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py_golf_games.round.</span></span><span class="sig-name descname"><span class="pre">Round</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">course</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#py_golf_games.course.Course" title="py_golf_games.course.Course"><span class="pre">Course</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">players</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#py_golf_games.player.Player" title="py_golf_games.player.Player"><span class="pre">Player</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/py_golf_games/round.html#Round"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_golf_games.round.Round" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">.player</span> <span class="kn">import</span> <span class="n">Gender</span><span class="p">,</span> <span class="n">Player</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p1</span> <span class="o">=</span> <span class="n">Player</span><span class="p">(</span><span class="s2">&quot;SpongeBob&quot;</span><span class="p">,</span> <span class="n">Gender</span><span class="o">.</span><span class="n">M</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p2</span> <span class="o">=</span> <span class="n">Player</span><span class="p">(</span><span class="s2">&quot;Squarepants&quot;</span><span class="p">,</span> <span class="n">Gender</span><span class="o">.</span><span class="n">F</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">.course</span> <span class="kn">import</span> <span class="n">Course</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">course</span> <span class="o">=</span> <span class="n">Course</span><span class="p">(</span><span class="s2">&quot;Ocean&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">golf_round</span> <span class="o">=</span> <span class="n">Round</span><span class="p">(</span><span class="n">course</span><span class="p">,</span> <span class="p">[</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">course</span> <span class="ow">is</span> <span class="n">golf_round</span><span class="o">.</span><span class="n">course</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">golf_round</span><span class="o">.</span><span class="n">players</span><span class="p">)</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p3</span> <span class="o">=</span> <span class="n">Player</span><span class="p">(</span><span class="s2">&quot;Joe&quot;</span><span class="p">,</span> <span class="n">Gender</span><span class="o">.</span><span class="n">M</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">golf_round</span><span class="o">.</span><span class="n">add_player</span><span class="p">(</span><span class="n">p3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">golf_round</span><span class="o">.</span><span class="n">players</span><span class="p">)</span>
+<span class="go">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">.scorecard</span> <span class="kn">import</span> <span class="n">Scorecard</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">golf_round</span><span class="o">.</span><span class="n">scorecard</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="ow">is</span> <span class="n">Scorecard</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">golf_round</span><span class="o">.</span><span class="n">current_hole</span> <span class="ow">is</span> <span class="kc">None</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">golf_round</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">golf_round</span><span class="o">.</span><span class="n">current_hole</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">golf_round</span><span class="o">.</span><span class="n">advance_hole</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">golf_round</span><span class="o">.</span><span class="n">current_hole</span>
+<span class="go">2</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="py_golf_games.round.Round.add_player">
+<span class="sig-name descname"><span class="pre">add_player</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">player</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#py_golf_games.player.Player" title="py_golf_games.player.Player"><span class="pre">Player</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/py_golf_games/round.html#Round.add_player"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_golf_games.round.Round.add_player" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_golf_games.round.Round.advance_hole">
+<span class="sig-name descname"><span class="pre">advance_hole</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/py_golf_games/round.html#Round.advance_hole"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_golf_games.round.Round.advance_hole" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="py_golf_games.round.Round.course">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">course</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#py_golf_games.course.Course" title="py_golf_games.course.Course"><span class="pre">Course</span></a></em><a class="headerlink" href="#py_golf_games.round.Round.course" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="py_golf_games.round.Round.current_hole">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">current_hole</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#py_golf_games.round.Round.current_hole" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="py_golf_games.round.Round.players">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">players</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#py_golf_games.player.Player" title="py_golf_games.player.Player"><span class="pre">Player</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#py_golf_games.round.Round.players" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_golf_games.round.Round.record_score">
+<span class="sig-name descname"><span class="pre">record_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">player</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#py_golf_games.player.Player" title="py_golf_games.player.Player"><span class="pre">Player</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">hole_number</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/py_golf_games/round.html#Round.record_score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_golf_games.round.Round.record_score" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="py_golf_games.round.Round.scorecard">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">scorecard</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#py_golf_games.scorecard.Scorecard" title="py_golf_games.scorecard.Scorecard"><span class="pre">Scorecard</span></a></em><a class="headerlink" href="#py_golf_games.round.Round.scorecard" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_golf_games.round.Round.start">
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/py_golf_games/round.html#Round.start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_golf_games.round.Round.start" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-py_golf_games.scorecard">
+<span id="py-golf-games-scorecard-module"></span><h2>py_golf_games.scorecard module<a class="headerlink" href="#module-py_golf_games.scorecard" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="py_golf_games.scorecard.HoleScore">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py_golf_games.scorecard.</span></span><span class="sig-name descname"><span class="pre">HoleScore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hole_number</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/py_golf_games/scorecard.html#HoleScore"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_golf_games.scorecard.HoleScore" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">score</span> <span class="o">=</span> <span class="n">HoleScore</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">score</span><span class="o">.</span><span class="n">hole_number</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">score</span><span class="o">.</span><span class="n">hole_number</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">score</span><span class="o">.</span><span class="n">hole_number</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">score</span><span class="o">.</span><span class="n">score</span>
+<span class="go">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">score</span><span class="o">.</span><span class="n">score</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">score</span><span class="o">.</span><span class="n">score</span>
+<span class="go">10</span>
+</pre></div>
+</div>
+<dl class="py property">
+<dt class="sig sig-object py" id="py_golf_games.scorecard.HoleScore.hole_number">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">hole_number</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#py_golf_games.scorecard.HoleScore.hole_number" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="py_golf_games.scorecard.HoleScore.score">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">score</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#py_golf_games.scorecard.HoleScore.score" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="py_golf_games.scorecard.PlayerScores">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py_golf_games.scorecard.</span></span><span class="sig-name descname"><span class="pre">PlayerScores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">player</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#py_golf_games.player.Player" title="py_golf_games.player.Player"><span class="pre">Player</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/py_golf_games/scorecard.html#PlayerScores"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_golf_games.scorecard.PlayerScores" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">.player</span> <span class="kn">import</span> <span class="n">Gender</span><span class="p">,</span> <span class="n">Player</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Player</span><span class="p">(</span><span class="s2">&quot;SpongeBob&quot;</span><span class="p">,</span> <span class="n">Gender</span><span class="o">.</span><span class="n">M</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ps</span> <span class="o">=</span> <span class="n">PlayerScores</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ps</span><span class="o">.</span><span class="n">record_score</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ps</span><span class="o">.</span><span class="n">record_score</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ps</span><span class="o">.</span><span class="n">total_score</span>
+<span class="go">8</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hole_score</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">get_score</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hole_score</span><span class="o">.</span><span class="n">hole_number</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hole_score</span><span class="o">.</span><span class="n">score</span>
+<span class="go">5</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="py_golf_games.scorecard.PlayerScores.get_score">
+<span class="sig-name descname"><span class="pre">get_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hole_number</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#py_golf_games.scorecard.HoleScore" title="py_golf_games.scorecard.HoleScore"><span class="pre">HoleScore</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/py_golf_games/scorecard.html#PlayerScores.get_score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_golf_games.scorecard.PlayerScores.get_score" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_golf_games.scorecard.PlayerScores.record_score">
+<span class="sig-name descname"><span class="pre">record_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hole_number</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/py_golf_games/scorecard.html#PlayerScores.record_score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_golf_games.scorecard.PlayerScores.record_score" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="py_golf_games.scorecard.PlayerScores.total_score">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">total_score</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#py_golf_games.scorecard.PlayerScores.total_score" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="py_golf_games.scorecard.Scorecard">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py_golf_games.scorecard.</span></span><span class="sig-name descname"><span class="pre">Scorecard</span></span><a class="reference internal" href="../_modules/py_golf_games/scorecard.html#Scorecard"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_golf_games.scorecard.Scorecard" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">.player</span> <span class="kn">import</span> <span class="n">Gender</span><span class="p">,</span> <span class="n">Player</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p1</span> <span class="o">=</span> <span class="n">Player</span><span class="p">(</span><span class="s2">&quot;SpongeBob&quot;</span><span class="p">,</span> <span class="n">Gender</span><span class="o">.</span><span class="n">M</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p2</span> <span class="o">=</span> <span class="n">Player</span><span class="p">(</span><span class="s2">&quot;Squarepants&quot;</span><span class="p">,</span> <span class="n">Gender</span><span class="o">.</span><span class="n">F</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">scorecard</span> <span class="o">=</span> <span class="n">Scorecard</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">scorecard</span><span class="o">.</span><span class="n">record_score</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">scorecard</span><span class="o">.</span><span class="n">record_score</span><span class="p">(</span><span class="n">p2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">scorecard</span><span class="o">.</span><span class="n">get_scores</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span> 
+<span class="go">&lt;py_golf_games.scorecard.PlayerScores object at 0x...&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">scorecard</span><span class="o">.</span><span class="n">get_score</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">score</span>
+<span class="go">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">scorecard</span><span class="o">.</span><span class="n">get_score</span><span class="p">(</span><span class="n">p2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">score</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="py_golf_games.scorecard.Scorecard.get_score">
+<span class="sig-name descname"><span class="pre">get_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">player</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#py_golf_games.player.Player" title="py_golf_games.player.Player"><span class="pre">Player</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">hole_number</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#py_golf_games.scorecard.HoleScore" title="py_golf_games.scorecard.HoleScore"><span class="pre">HoleScore</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/py_golf_games/scorecard.html#Scorecard.get_score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_golf_games.scorecard.Scorecard.get_score" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_golf_games.scorecard.Scorecard.get_scores">
+<span class="sig-name descname"><span class="pre">get_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">player</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#py_golf_games.player.Player" title="py_golf_games.player.Player"><span class="pre">Player</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#py_golf_games.scorecard.PlayerScores" title="py_golf_games.scorecard.PlayerScores"><span class="pre">PlayerScores</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/py_golf_games/scorecard.html#Scorecard.get_scores"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_golf_games.scorecard.Scorecard.get_scores" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="py_golf_games.scorecard.Scorecard.record_score">
+<span class="sig-name descname"><span class="pre">record_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">player</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#py_golf_games.player.Player" title="py_golf_games.player.Player"><span class="pre">Player</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">hole_number</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/py_golf_games/scorecard.html#Scorecard.record_score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_golf_games.scorecard.Scorecard.record_score" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-py_golf_games.tee">
+<span id="py-golf-games-tee-module"></span><h2>py_golf_games.tee module<a class="headerlink" href="#module-py_golf_games.tee" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="py_golf_games.tee.Tee">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py_golf_games.tee.</span></span><span class="sig-name descname"><span class="pre">Tee</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">marker</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#py_golf_games.tee.TeeMarker" title="py_golf_games.tee.TeeMarker"><span class="pre">TeeMarker</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">par</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handicap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/py_golf_games/tee.html#Tee"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_golf_games.tee.Tee" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">Tee</span><span class="p">(</span><span class="n">TeeMarker</span><span class="o">.</span><span class="n">White</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">310</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">par</span>
+<span class="go">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">distance</span>
+<span class="go">310</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">marker</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;White&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">handicap</span>
+<span class="go">8</span>
+</pre></div>
+</div>
+<dl class="py property">
+<dt class="sig sig-object py" id="py_golf_games.tee.Tee.distance">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">distance</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#py_golf_games.tee.Tee.distance" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="py_golf_games.tee.Tee.handicap">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">handicap</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#py_golf_games.tee.Tee.handicap" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="py_golf_games.tee.Tee.marker">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">marker</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#py_golf_games.tee.TeeMarker" title="py_golf_games.tee.TeeMarker"><span class="pre">TeeMarker</span></a></em><a class="headerlink" href="#py_golf_games.tee.Tee.marker" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="py_golf_games.tee.Tee.par">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">par</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#py_golf_games.tee.Tee.par" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="py_golf_games.tee.TeeMarker">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">py_golf_games.tee.</span></span><span class="sig-name descname"><span class="pre">TeeMarker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/py_golf_games/tee.html#TeeMarker"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#py_golf_games.tee.TeeMarker" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="py_golf_games.tee.TeeMarker.Blue">
+<span class="sig-name descname"><span class="pre">Blue</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#py_golf_games.tee.TeeMarker.Blue" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="py_golf_games.tee.TeeMarker.Gold">
+<span class="sig-name descname"><span class="pre">Gold</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#py_golf_games.tee.TeeMarker.Gold" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="py_golf_games.tee.TeeMarker.Green">
+<span class="sig-name descname"><span class="pre">Green</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#py_golf_games.tee.TeeMarker.Green" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="py_golf_games.tee.TeeMarker.Red">
+<span class="sig-name descname"><span class="pre">Red</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#py_golf_games.tee.TeeMarker.Red" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="py_golf_games.tee.TeeMarker.White">
+<span class="sig-name descname"><span class="pre">White</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#py_golf_games.tee.TeeMarker.White" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-py_golf_games">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-py_golf_games" title="Link to this heading">¶</a></h2>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2015, Ryan Kanno
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">py_golf_games package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-py_golf_games.course">py_golf_games.course module</a><ul>
+<li><a class="reference internal" href="#py_golf_games.course.Course"><code class="docutils literal notranslate"><span class="pre">Course</span></code></a><ul>
+<li><a class="reference internal" href="#py_golf_games.course.Course.add_hole"><code class="docutils literal notranslate"><span class="pre">Course.add_hole()</span></code></a></li>
+<li><a class="reference internal" href="#py_golf_games.course.Course.get_hole"><code class="docutils literal notranslate"><span class="pre">Course.get_hole()</span></code></a></li>
+<li><a class="reference internal" href="#py_golf_games.course.Course.holes"><code class="docutils literal notranslate"><span class="pre">Course.holes</span></code></a></li>
+<li><a class="reference internal" href="#py_golf_games.course.Course.name"><code class="docutils literal notranslate"><span class="pre">Course.name</span></code></a></li>
+<li><a class="reference internal" href="#py_golf_games.course.Course.total_distance"><code class="docutils literal notranslate"><span class="pre">Course.total_distance()</span></code></a></li>
+<li><a class="reference internal" href="#py_golf_games.course.Course.total_par"><code class="docutils literal notranslate"><span class="pre">Course.total_par()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-py_golf_games.hole">py_golf_games.hole module</a><ul>
+<li><a class="reference internal" href="#py_golf_games.hole.Hole"><code class="docutils literal notranslate"><span class="pre">Hole</span></code></a><ul>
+<li><a class="reference internal" href="#py_golf_games.hole.Hole.get_tee"><code class="docutils literal notranslate"><span class="pre">Hole.get_tee()</span></code></a></li>
+<li><a class="reference internal" href="#py_golf_games.hole.Hole.number"><code class="docutils literal notranslate"><span class="pre">Hole.number</span></code></a></li>
+<li><a class="reference internal" href="#py_golf_games.hole.Hole.tees"><code class="docutils literal notranslate"><span class="pre">Hole.tees</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-py_golf_games.player">py_golf_games.player module</a><ul>
+<li><a class="reference internal" href="#py_golf_games.player.Gender"><code class="docutils literal notranslate"><span class="pre">Gender</span></code></a><ul>
+<li><a class="reference internal" href="#py_golf_games.player.Gender.F"><code class="docutils literal notranslate"><span class="pre">Gender.F</span></code></a></li>
+<li><a class="reference internal" href="#py_golf_games.player.Gender.M"><code class="docutils literal notranslate"><span class="pre">Gender.M</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#py_golf_games.player.Player"><code class="docutils literal notranslate"><span class="pre">Player</span></code></a><ul>
+<li><a class="reference internal" href="#py_golf_games.player.Player.gender"><code class="docutils literal notranslate"><span class="pre">Player.gender</span></code></a></li>
+<li><a class="reference internal" href="#py_golf_games.player.Player.handicap"><code class="docutils literal notranslate"><span class="pre">Player.handicap</span></code></a></li>
+<li><a class="reference internal" href="#py_golf_games.player.Player.name"><code class="docutils literal notranslate"><span class="pre">Player.name</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-py_golf_games.round">py_golf_games.round module</a><ul>
+<li><a class="reference internal" href="#py_golf_games.round.Round"><code class="docutils literal notranslate"><span class="pre">Round</span></code></a><ul>
+<li><a class="reference internal" href="#py_golf_games.round.Round.add_player"><code class="docutils literal notranslate"><span class="pre">Round.add_player()</span></code></a></li>
+<li><a class="reference internal" href="#py_golf_games.round.Round.advance_hole"><code class="docutils literal notranslate"><span class="pre">Round.advance_hole()</span></code></a></li>
+<li><a class="reference internal" href="#py_golf_games.round.Round.course"><code class="docutils literal notranslate"><span class="pre">Round.course</span></code></a></li>
+<li><a class="reference internal" href="#py_golf_games.round.Round.current_hole"><code class="docutils literal notranslate"><span class="pre">Round.current_hole</span></code></a></li>
+<li><a class="reference internal" href="#py_golf_games.round.Round.players"><code class="docutils literal notranslate"><span class="pre">Round.players</span></code></a></li>
+<li><a class="reference internal" href="#py_golf_games.round.Round.record_score"><code class="docutils literal notranslate"><span class="pre">Round.record_score()</span></code></a></li>
+<li><a class="reference internal" href="#py_golf_games.round.Round.scorecard"><code class="docutils literal notranslate"><span class="pre">Round.scorecard</span></code></a></li>
+<li><a class="reference internal" href="#py_golf_games.round.Round.start"><code class="docutils literal notranslate"><span class="pre">Round.start()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-py_golf_games.scorecard">py_golf_games.scorecard module</a><ul>
+<li><a class="reference internal" href="#py_golf_games.scorecard.HoleScore"><code class="docutils literal notranslate"><span class="pre">HoleScore</span></code></a><ul>
+<li><a class="reference internal" href="#py_golf_games.scorecard.HoleScore.hole_number"><code class="docutils literal notranslate"><span class="pre">HoleScore.hole_number</span></code></a></li>
+<li><a class="reference internal" href="#py_golf_games.scorecard.HoleScore.score"><code class="docutils literal notranslate"><span class="pre">HoleScore.score</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#py_golf_games.scorecard.PlayerScores"><code class="docutils literal notranslate"><span class="pre">PlayerScores</span></code></a><ul>
+<li><a class="reference internal" href="#py_golf_games.scorecard.PlayerScores.get_score"><code class="docutils literal notranslate"><span class="pre">PlayerScores.get_score()</span></code></a></li>
+<li><a class="reference internal" href="#py_golf_games.scorecard.PlayerScores.record_score"><code class="docutils literal notranslate"><span class="pre">PlayerScores.record_score()</span></code></a></li>
+<li><a class="reference internal" href="#py_golf_games.scorecard.PlayerScores.total_score"><code class="docutils literal notranslate"><span class="pre">PlayerScores.total_score</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#py_golf_games.scorecard.Scorecard"><code class="docutils literal notranslate"><span class="pre">Scorecard</span></code></a><ul>
+<li><a class="reference internal" href="#py_golf_games.scorecard.Scorecard.get_score"><code class="docutils literal notranslate"><span class="pre">Scorecard.get_score()</span></code></a></li>
+<li><a class="reference internal" href="#py_golf_games.scorecard.Scorecard.get_scores"><code class="docutils literal notranslate"><span class="pre">Scorecard.get_scores()</span></code></a></li>
+<li><a class="reference internal" href="#py_golf_games.scorecard.Scorecard.record_score"><code class="docutils literal notranslate"><span class="pre">Scorecard.record_score()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-py_golf_games.tee">py_golf_games.tee module</a><ul>
+<li><a class="reference internal" href="#py_golf_games.tee.Tee"><code class="docutils literal notranslate"><span class="pre">Tee</span></code></a><ul>
+<li><a class="reference internal" href="#py_golf_games.tee.Tee.distance"><code class="docutils literal notranslate"><span class="pre">Tee.distance</span></code></a></li>
+<li><a class="reference internal" href="#py_golf_games.tee.Tee.handicap"><code class="docutils literal notranslate"><span class="pre">Tee.handicap</span></code></a></li>
+<li><a class="reference internal" href="#py_golf_games.tee.Tee.marker"><code class="docutils literal notranslate"><span class="pre">Tee.marker</span></code></a></li>
+<li><a class="reference internal" href="#py_golf_games.tee.Tee.par"><code class="docutils literal notranslate"><span class="pre">Tee.par</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#py_golf_games.tee.TeeMarker"><code class="docutils literal notranslate"><span class="pre">TeeMarker</span></code></a><ul>
+<li><a class="reference internal" href="#py_golf_games.tee.TeeMarker.Blue"><code class="docutils literal notranslate"><span class="pre">TeeMarker.Blue</span></code></a></li>
+<li><a class="reference internal" href="#py_golf_games.tee.TeeMarker.Gold"><code class="docutils literal notranslate"><span class="pre">TeeMarker.Gold</span></code></a></li>
+<li><a class="reference internal" href="#py_golf_games.tee.TeeMarker.Green"><code class="docutils literal notranslate"><span class="pre">TeeMarker.Green</span></code></a></li>
+<li><a class="reference internal" href="#py_golf_games.tee.TeeMarker.Red"><code class="docutils literal notranslate"><span class="pre">TeeMarker.Red</span></code></a></li>
+<li><a class="reference internal" href="#py_golf_games.tee.TeeMarker.White"><code class="docutils literal notranslate"><span class="pre">TeeMarker.White</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-py_golf_games">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=5fa4622c"></script>
+    </body>
+</html>
