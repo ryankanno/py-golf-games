@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import random
-import typing
 
 from ..course import Course
 from ..hole import Hole
@@ -31,7 +30,7 @@ class HoleGenerator:
 
 class TeesGenerator:
     @classmethod
-    def generate(cls) -> typing.Dict[TeeMarker, Tee]:
+    def generate(cls) -> dict[TeeMarker, Tee]:
         tees = {}
         for marker in list(TeeMarker):
             tee = TeeGenerator.generate(marker)
@@ -57,7 +56,7 @@ class PlayersGenerator:
         return random.choice(list(Gender))
 
     @classmethod
-    def generate(cls, max_players: int = 4) -> typing.List[Player]:
+    def generate(cls, max_players: int = 4) -> list[Player]:
         return [
             Player(cls._random_name(), cls._random_gender())
             for _ in range(random.randint(1, max_players))
@@ -66,7 +65,7 @@ class PlayersGenerator:
 
 class RoundGenerator:
     @classmethod
-    def generate(cls, course: Course, players: typing.List[Player]) -> Round:
+    def generate(cls, course: Course, players: list[Player]) -> Round:
         golf_round = Round(course, players)
 
         for player in players:

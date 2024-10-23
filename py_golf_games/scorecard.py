@@ -61,12 +61,12 @@ class PlayerScores:
     def __init__(self, player: Player) -> None:
         super().__init__()
         self._player = player
-        self._hole_scores: typing.Dict[int, HoleScore] = {}
+        self._hole_scores: dict[int, HoleScore] = {}
 
     def record_score(self, hole_number: int, score: int) -> None:
         self._hole_scores[hole_number] = HoleScore(hole_number, score)
 
-    def get_score(self, hole_number: int) -> typing.Optional[HoleScore]:
+    def get_score(self, hole_number: int) -> HoleScore | None:
         return self._hole_scores.get(hole_number, None)
 
     @property
@@ -97,7 +97,7 @@ class Scorecard:
 
     def __init__(self) -> None:
         super().__init__()
-        self._player_scores: typing.Dict[Player, PlayerScores] = {}
+        self._player_scores: dict[Player, PlayerScores] = {}
 
     def record_score(
         self, player: Player, hole_number: int, score: int
@@ -107,12 +107,10 @@ class Scorecard:
 
         self._player_scores[player].record_score(hole_number, score)
 
-    def get_scores(self, player: Player) -> typing.Optional[PlayerScores]:
+    def get_scores(self, player: Player) -> PlayerScores | None:
         return self._player_scores.get(player, None)
 
-    def get_score(
-        self, player: Player, hole_number: int
-    ) -> typing.Optional[HoleScore]:
+    def get_score(self, player: Player, hole_number: int) -> HoleScore | None:
         return (
             self._player_scores[player].get_score(hole_number)
             if player in self._player_scores

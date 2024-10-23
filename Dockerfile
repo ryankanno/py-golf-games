@@ -1,69 +1,84 @@
+# syntax=docker/dockerfile:1.9
 FROM python:3.11-slim-buster AS base
 
 ENV PYTHONFAULTHANDLER=1 \
     PYTHONUNBUFFERED=1 \
     PYTHONHASHSEED=random
 
-FROM base as builder
+FROM base AS uv
 
-ENV PIP_NO_CACHE_DIR=off \
-    PIP_DISABLE_PIP_VERSION_CHECK=on \
-    PIP_DEFAULT_TIMEOUT=100 \
-    PATH="~/.local/bin:/venv/bin:${PATH}" \
-    VIRTUAL_ENV="/venv" \
-    POETRY_VERSION=1.5.1 \
-    POETRY_VIRTUALENVS_CREATE=false
-
-WORKDIR /app
+ENV UV_LINK_MODE=copy \
+    UV_COMPILE_BYTECODE=1 \
+    UV_PYTHON_DOWNLOADS=never \
+    UV_PYTHON=python3.11 \
+    UV_PROJECT_ENVIRONMENT=/app
 
 SHELL ["/bin/bash", "-exo", "pipefail",  "-c"]
 
-RUN apt-get update \
-    && apt-get install --no-install-recommends -y curl \
+RUN apt-get update -qy \
+    && apt-get install -qyy \
+    -o APT::Install-Recommends=false \
+    -o APT::Install-Suggests=false \
+    ca-certificates \
 	&& apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-RUN curl -sSL https://install.python-poetry.org | python3 - --version ${POETRY_VERSION}
-RUN python3 -m venv ${VIRTUAL_ENV}
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
 
-COPY pyproject.toml poetry.lock ./
-RUN poetry install --no-dev --no-interaction --no-ansi --no-root
-COPY . ./
-RUN poetry install --no-interaction --no-ansi
+FROM uv AS deps-builder
+
+COPY pyproject.toml /_project/
+COPY uv.lock /_project/
+
+RUN --mount=type=cache,target=/root/.cache <<EOT
+    uv venv
+EOT
+
+# install deps
+RUN --mount=type=cache,target=/root/.cache <<EOT
+    cd /_project
+    uv sync --locked --no-dev --no-install-project
+EOT
+
+FROM uv AS project-builder
+
+COPY --from=deps-builder /app /app
+
+COPY . /src
+
+# install project
+RUN --mount=type=cache,target=/root/.cache <<EOT
+    cd /src
+    uv sync --locked --no-dev --no-editable
+EOT
 
 FROM base AS final
 
-ARG REPOSITORY=https://github.com/ryankanno/py-golf-games
-ARG BUILD_DATETIME
-ARG VERSION
-ARG REVISION
-ARG BRANCH
+SHELL ["/bin/bash", "-exo", "pipefail",  "-c"]
 
-ENV REPOSITORY=${REPOSITORY}
-ENV BUILD_DATETIME=${BUILD_DATETIME:-null}
-ENV VERSION=${VERSION:-null}
-ENV REVISION=${REVISION:-null}
-ENV BRANCH=${BRANCH:-main}
+ENV PATH=/app/bin:$PATH
 
-ENV PATH="/venv/bin:${PATH}" \
-    VIRTUAL_ENV="/venv" \
-    PYTHONPATH="/app"
+RUN <<EOT
+    groupadd -r app
+    useradd -r -d /app -g app -N app
+EOT
 
-LABEL maintainers="Ryan Kanno <ryankanno@localkinegrinds.com>"
+STOPSIGNAL SIGINT
 
-LABEL org.opencontainers.image.created="${BUILD_DATETIME}" \
-      org.opencontainers.image.title="py-golf-games" \
-      org.opencontainers.image.description="Library to help simulate golf games" \
-      org.opencontainers.image.authors="ryankanno@localkinegrinds.com" \
-      org.opencontainers.image.revision="${REVISION}" \
-      org.opencontainers.image.source="${REPOSITORY}" \
-      org.opencontainers.image.version="${VERSION}" \
-      org.opencontainers.image.licenses="MIT"
+RUN <<EOT
+    apt-get update -qy
+    apt-get install -qyy \
+    -o APT::Install-Recommends=false \
+    -o APT::Install-Suggests=false
+    apt-get clean
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+EOT
 
-COPY --from=builder ${VIRTUAL_ENV} ${VIRTUAL_ENV}
-COPY --from=builder /app /app
-
-COPY docker-entrypoint.sh /docker-entrypoint.sh
+COPY docker-entrypoint.sh /
 RUN chmod +x '/docker-entrypoint.sh'
-
 ENTRYPOINT ["/bin/bash", "/docker-entrypoint.sh"]
+
+COPY --from=project-builder --chown=app:app /app /app
+
+USER app
+WORKDIR /app

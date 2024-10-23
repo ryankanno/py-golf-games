@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-import typing
 from enum import Enum
 from enum import unique
 
@@ -32,7 +31,7 @@ class Tee:
         marker: TeeMarker,
         par: int,
         distance: int,
-        handicap: typing.Optional[int] = None,
+        handicap: int | None = None,
     ) -> None:
         super().__init__()
         self._marker = marker
@@ -53,7 +52,7 @@ class Tee:
         return self._distance
 
     @property
-    def handicap(self) -> typing.Optional[int]:
+    def handicap(self) -> int | None:
         return self._handicap
 
 

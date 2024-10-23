@@ -34,12 +34,12 @@ class Course:
     def __init__(self, name: str) -> None:
         super().__init__()
         self._name = name
-        self._holes: typing.Dict[int, Hole] = {}
+        self._holes: dict[int, Hole] = {}
 
     def add_hole(self, hole_number: int, hole: Hole) -> None:
         self._holes[hole_number] = hole
 
-    def get_hole(self, hole_number: int) -> typing.Optional[Hole]:
+    def get_hole(self, hole_number: int) -> Hole | None:
         return self._holes.get(hole_number, None)
 
     @property
