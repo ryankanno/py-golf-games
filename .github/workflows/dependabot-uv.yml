@@ -1,0 +1,41 @@
+name: dependabot-uv
+
+on:
+  pull_request:
+    paths:
+      - pyproject.toml
+
+permissions:
+  contents: write
+  pull-requests: write
+
+env:
+  UV_VERSION: 0.4.25
+
+jobs:
+  lock:
+    runs-on: ubuntu-latest
+    env:
+      GH_PAT: ${{ secrets.GH_PAT }}
+    steps:
+      - name: Checkout w/ token
+        uses: actions/checkout@v4
+        if: ${{ env.GH_PAT != '' }}
+        with:
+          token: ${{ env.GH_PAT }}
+
+      - name: Checkout w/o token
+        uses: actions/checkout@v4
+        if: ${{ env.GH_PAT == '' }}
+
+      - uses: astral-sh/setup-uv@v3
+        with:
+          version: ${{ env.UV_VERSION }}
+          enable-cache: true
+
+      - name: Run uv lock to generate updated lockfile
+        run: uv lock
+
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: build: update uv.lock
